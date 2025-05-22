@@ -18,10 +18,9 @@ const HomeAbout = () => {
                             <img
                                 src={aboutus}
                                 alt="Ride Booking Service"
-                                className="rounded-2xl shadow-lg w-full lg:h-[450px]  h-[300px] object-cover transition-transform duration-500 hover:scale-105 "
+                                className="rounded-2xl shadow-lg w-full lg:h-[450px]  h-[300px] object-cover transition-transform duration-500 hover:scale-105"
                             />
                         </div>
-
                         <div className='lg:order-2 order-1'>
                             <h2 className="md:text-4xl text-2xl font-bold text-gray-800 md:mb-6 mb-4">About Us</h2>
                             <div className='border-l-4 border-gray-800 pl-5'>

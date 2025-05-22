@@ -60,7 +60,6 @@ const Screenshot = () => {
                         <h2 className="md:text-4xl text-2xl font-bold text-gray-800 mb-6">How It Works</h2>
                     </div>
                 </div>
-
                 <div className="my-6">
                     <Slider {...settings}>
                         {images.map((image, index) => (

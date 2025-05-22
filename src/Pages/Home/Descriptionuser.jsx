@@ -42,13 +42,13 @@ const Descriptionuser = () => {
                         <p className="text-gray-600 text-md leading-relaxed mb-4">
                             Your safety is our priority. All our drivers are verified, trained, and committed to providing you with a secure and smooth journey. Enjoy peace of mind from pick-up to drop-off.
                         </p>
-                        <button
+                        {/* <button
                             type="submit"
                             onClick={() => setshowmodal(true)}
                             className="bg-black text-white font-normal py-2 px-4 rounded-[10px] flex items-center justify-center gap-2 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-200 shadow-md cursor-pointer"
                         >
                             Register as User
-                        </button>
+                        </button> */}
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-5">
