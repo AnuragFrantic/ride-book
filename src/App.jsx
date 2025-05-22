@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import './App.css'
 import WebLayout from './Layout/WebLayout'
 import Home from './Pages/Home'
-import Aboutus from './Pages/Home/Aboutus'
+
 import Career from './Pages/Career'
 import Policy from './Pages/Policies/Policy'
 import Termscondition from './Pages/Policies/Termscondition'
