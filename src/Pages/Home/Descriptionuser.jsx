@@ -107,9 +107,6 @@ const Descriptionuser = () => {
                     </div>
 
                 </div>
-
-
-
             </div>
             {showmodal && (
                 <div className="fixed inset-0 bg-[#000000c7] bg-opacity-50 flex items-center justify-center z-50">

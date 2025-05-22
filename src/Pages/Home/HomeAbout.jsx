@@ -32,7 +32,7 @@ const HomeAbout = () => {
                                 </p>
                                 <p className="mt-4 text-gray-700 font-medium md:text-lg text-sm">Ride smart. Ride safe. Ride with YourAppName.</p>
                             </div>
-                            <button className="mt-8 inline-block md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 rounded-full bg-black text-white transition duration-300"
+                            <button className="cursor-pointer mt-8 inline-block md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 rounded-full bg-black text-white transition duration-300"
                                 onClick={() => navigate('/about-us')}
                             >
                                 Learn More
