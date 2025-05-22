@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import aboutus from '../../assets/Image/aboutus.jpg'
+import aboutus from '../../assets/Image/about.jpg'
 import { useNavigate } from 'react-router-dom'
 import Aos from 'aos';
 import 'aos/dist/aos.css';

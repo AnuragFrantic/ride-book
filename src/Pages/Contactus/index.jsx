@@ -43,7 +43,7 @@ const Contactus = () => {
                                 </p>
                             </div>
                         </div>
-                           <div className="col-span-1 text-center relative">
+                        <div className="col-span-1 text-center relative">
                             <div className="w-full bg-white rounded-[20px] p-7 contact-info h-full">
                                 <div className='bg-black md:h-[80px] h-[60px] md:w-[80px] w-[60px] rounded-full flex justify-center items-center text-white mx-auto mb-4'>
                                     <MdOutlineMail className='md:text-[30px] text-[20px]' />
@@ -53,12 +53,12 @@ const Contactus = () => {
 
                                 </h2>
                                 <p className='text-[16px] font-[500]'>
-                                   info@example.com
+                                    info@example.com
                                 </p>
                             </div>
                         </div>
-                      
-                       
+
+
                     </div>
                     <div className="grid md:grid-cols-2 grid-cols-1 bg-white md:p-10 p-5 rounded-[20px] mt-10 gap-10 items-center">
                         <div className="col-span-1 contact-img relative md:block hidden">

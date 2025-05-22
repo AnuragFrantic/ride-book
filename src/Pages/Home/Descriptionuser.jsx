@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Descriptionuser = () => {
     const navigate = useNavigate();
-    const [showmodal, setshowmodal] = useState(false)
+    const [showmodal, setshowmodal] = useState(false);
     const closePopup = () => {
         setshowmodal(false);
     }
@@ -21,13 +21,14 @@ const Descriptionuser = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2  gap-8 items-center ">
 
                     <div className="col-span-1 md:order-1 order-2">
-                        <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
+                        <img src={user} alt='image' className='rounded-[20px]'/>
+                        {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
                             <img
                                 src={user}
                                 alt="User"
                                 className="w-full h-full object-cover  rounded-[40px_50%_50%_50%]"
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-span-1 md:order-2 order-1">
                         <h2 className="md:text-3xl text-2xl font-semibold text-gray-800 mb-4">About User</h2>
@@ -70,24 +71,26 @@ const Descriptionuser = () => {
                         </button>
                     </div>
                     <div className="col-span-1">
-                        <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
+                          <img src={driver} alt='image' className='rounded-[20px]'/>
+                        {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
                             <img
                                 src={driver}
                                 alt="User"
                                 className="w-full h-full object-cover  rounded-[40px_50%_50%_50%]"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-5">
                     <div className="col-span-1 md:order-1 order-2">
-                        <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2 ">
+                          <img src={vendor} alt='image' className='rounded-[20px]'/>
+                        {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2 ">
                             <img
                                 src={vendor}
                                 alt="User"
                                 className="w-full h-full object-cover  rounded-[40px_50%_50%_50%]"
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="col-span-1  md:order-2 order-1">
                         <h2 className="md:text-3xl text-2xl font-semibold text-gray-800 mb-4">About Vendor</h2>
