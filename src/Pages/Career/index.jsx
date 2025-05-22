@@ -9,7 +9,7 @@ const Career = () => {
             <section className='innerbanner flex items-center justify-center relative sm:h-[300px] h-[200px] bg-cover bg-center '>
                 <div className="absolute inset-0 bg-[#00000075] bg-opacity-50 z-0"></div>
                 <div className="container mx-auto z-10 text-center">
-                    <h2 className="text-4xl font-bold text-white">Career</h2>
+                    <h2 className="md:text-4xl text-2xl font-bold text-white">Career</h2>
                 </div>
             </section>
 

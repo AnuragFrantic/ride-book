@@ -14,7 +14,7 @@ const Service = () => {
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1">
                         <div className="col-span-1 text-center">
-                            <h2 className="md:text-4xl text-3xl font-bold text-gray-800 mb-6">Services</h2>
+                            <h2 className="md:text-4xl text-2xl font-bold text-gray-800 mb-6">Services</h2>
                         </div>
                     </div>
                     <div className="grid lg:grid-cols-3 md:grid-cols-2 gris-cols-1 gap-5 md:pt-10 pt-0">

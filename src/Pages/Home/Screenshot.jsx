@@ -57,7 +57,7 @@ const Screenshot = () => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1">
                     <div className="col-span-1 text-center">
-                        <h2 className="md:text-4xl text-3xl font-bold text-gray-800 mb-6">How It Works</h2>
+                        <h2 className="md:text-4xl text-2xl font-bold text-gray-800 mb-6">How It Works</h2>
                     </div>
                 </div>
 
