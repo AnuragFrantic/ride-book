@@ -7,9 +7,10 @@ import Career from './Pages/Career'
 import Policy from './Pages/Policies/Policy'
 import Termscondition from './Pages/Policies/Termscondition'
 import Contactus from './Pages/Contactus'
-import AboutUs from './Pages/Aboutus'
+
 import Registerasvendor from './Pages/RegistrationForm/Registerasvendor'
 import Driverdetail from './Pages/Home/Driverdetail'
+import AboutUs from './Pages/AboutUs'
 
 function App() {
   const ThemeRoute = createBrowserRouter(

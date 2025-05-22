@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const Aboutus = () => {
+const HomeAbout = () => {
     const navigate = useNavigate();
     useEffect(() => {
         Aos.init({ duration: 2000 });
@@ -48,4 +48,4 @@ const Aboutus = () => {
     )
 }
 
-export default Aboutus
+export default HomeAbout
