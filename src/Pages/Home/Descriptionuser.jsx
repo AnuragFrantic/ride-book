@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import user from '../../assets/Image/user.jpg'
-import driver from '../../assets/Image/driver.jpg'
-import vendor from '../../assets/Image/vendor.jpg'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import user from '../../assets/Image/user.jpg';
+import driver from '../../assets/Image/driver.jpg';
+import vendor from '../../assets/Image/vendor.jpg';
+import { useNavigate } from 'react-router-dom';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const Descriptionuser = () => {
     const navigate = useNavigate();
     const [showmodal, setshowmodal] = useState(false);
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, []);
     const closePopup = () => {
         setshowmodal(false);
     }
@@ -20,8 +25,8 @@ const Descriptionuser = () => {
                 </div> */}
                 <div className="grid grid-cols-1 md:grid-cols-2  gap-8 items-center ">
 
-                    <div className="col-span-1 md:order-1 order-2">
-                        <img src={user} alt='image' className='rounded-[20px]'/>
+                    <div className="col-span-1 md:order-1 order-2"  data-aos="flip-up">
+                        <img src={user} alt='image' className='rounded-[20px]' />
                         {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
                             <img
                                 src={user}
@@ -70,8 +75,8 @@ const Descriptionuser = () => {
                             View Detail
                         </button>
                     </div>
-                    <div className="col-span-1">
-                          <img src={driver} alt='image' className='rounded-[20px]'/>
+                    <div className="col-span-1"  data-aos="flip-up">
+                        <img src={driver} alt='image' className='rounded-[20px]' />
                         {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2">
                             <img
                                 src={driver}
@@ -82,8 +87,8 @@ const Descriptionuser = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-5">
-                    <div className="col-span-1 md:order-1 order-2">
-                          <img src={vendor} alt='image' className='rounded-[20px]'/>
+                    <div className="col-span-1 md:order-1 order-2"  data-aos="flip-up">
+                        <img src={vendor} alt='image' className='rounded-[20px]' />
                         {/* <div className="relative description-wrapper w-full md:h-[400px] h-[200px] p-2 ">
                             <img
                                 src={vendor}
