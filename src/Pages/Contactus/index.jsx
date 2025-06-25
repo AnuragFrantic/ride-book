@@ -1,10 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiPhoneCall } from 'react-icons/fi'
 import { GrMapLocation } from 'react-icons/gr'
 import { MdOutlineMail } from 'react-icons/md'
 import contact from '../../assets/Image/contact.jpg'
+import axios from 'axios'
+import { BaseUrl } from '../../Api/BaseUrl'
+import { toast } from 'react-toastify'
 
 const Contactus = () => {
+    const [name, setname] = useState();
+    const [email, setemail] = useState();
+    const [subject, setsubject] = useState();
+    const [message, setmessage] = useState();
+    const resetform = () => {
+        setname("");
+        setemail("");
+        setsubject("");
+        setmessage("");
+    }
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        let requestdata = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+        }
+        try {
+            const resp = await axios.post(`${BaseUrl}contact`, requestdata);
+            console.log(resp);
+            if (resp.data.error == 0) {
+                toast.success("Form submitted successfully!");
+                resetform();
+            } else {
+                toast.error(resp.data.message || "Something went wrong!");
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    }
+
     return (
         <>
             <section className='innerbanner flex items-center justify-center relative sm:h-[300px] h-[200px] bg-cover bg-center '>
@@ -57,8 +92,6 @@ const Contactus = () => {
                                 </p>
                             </div>
                         </div>
-
-
                     </div>
                     <div className="grid md:grid-cols-2 grid-cols-1 bg-white md:p-10 p-5 rounded-[20px] mt-10 gap-10 items-center">
                         <div className="col-span-1 contact-img relative md:block hidden">
@@ -72,27 +105,35 @@ const Contactus = () => {
                                     It is a long established fact that a reader will be distracted by the readable content of a page randomised words slightly when looking at its layout.
                                 </p> */}
 
-                                <form className="space-y-4">
+                                <form className="space-y-4" onSubmit={handlesubmit}>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <input
                                             type="text"
                                             placeholder="Your Name"
+                                            value={name}
+                                            onChange={(e) => setname(e.target.value)}
                                             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                         />
                                         <input
                                             type="email"
                                             placeholder="Your Email"
+                                            value={email}
+                                            onChange={(e) => setemail(e.target.value)}
                                             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                         />
                                     </div>
                                     <input
                                         type="text"
                                         placeholder="Your Subject"
+                                        value={subject}
+                                        onChange={(e) => setsubject(e.target.value)}
                                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     />
                                     <textarea
                                         placeholder="Write Your Message"
                                         rows="5"
+                                        value={message}
+                                        onChange={(e) => setmessage(e.target.value)}
                                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                                     ></textarea>
                                     <button

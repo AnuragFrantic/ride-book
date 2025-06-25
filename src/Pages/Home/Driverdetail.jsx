@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { BsCircleFill } from 'react-icons/bs';
 import { FiPlus } from 'react-icons/fi';
 import { LuMinus } from 'react-icons/lu';
+import { toast } from 'react-toastify';
+import { BaseUrl } from '../../Api/BaseUrl';
 
 const Driverdetail = () => {
     const [activeIndex, setActiveIndex] = useState("");
-
     const toggleAccordion = (index) => {
         setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
     };
@@ -31,6 +33,140 @@ const Driverdetail = () => {
             answer: "We charge a nominal registra on fee which varies across ci es. It’s best to check directly during the registra on process."
         },
     ]
+    const [name, setname] = useState("");
+    const [address, setaddress] = useState("");
+    const [city, setcity] = useState("");
+    const [state, setstate] = useState("");
+    const [pincode, setpincode] = useState("");
+    const [phone, setphone] = useState("");
+    const [email, setemail] = useState("");
+    const [dob, setdob] = useState("");
+    const [marital_status, setmarital_status] = useState("");
+    const [pan_no, setpan_no] = useState("");
+    const [adhaar_no, setadhaar_no] = useState("");
+    const [dl_no, setdl_no] = useState("");
+    const [exp_date, setexp_date] = useState("");
+    const [images, setimages] = useState("");
+    const [police_verification, setpolice_verification] = useState("");
+    const [rc, setrc] = useState("");
+    const [permit, setpermit] = useState("");
+    const [insurance, setinsurance] = useState("");
+    const [vehicle_img, setvehicle_img] = useState("");
+    const [vehicle_selfie, setvehicle_selfie] = useState("");
+    const [bank_name, setbank_name] = useState("");
+    const [account_no, setaccount_no] = useState("");
+    const [ifsc, setifsc] = useState("");
+    const [upi, setupi] = useState("");
+    const [cancelled_cheque, setcancelled_cheque] = useState("");
+    const resetform = () => {
+        setname("");
+        setaddress("");
+        setcity("");
+        setstate("");
+        setpincode("");
+        setphone("");
+        setemail("");
+        setdob("");
+        setmarital_status("");
+        setpan_no("");
+        setadhaar_no("");
+        setdl_no("");
+        setexp_date("");
+        setimages("");
+        setpolice_verification("");
+        setrc("");
+        setpermit("");
+        setinsurance("");
+        setvehicle_img("");
+        setvehicle_selfie("");
+        setbank_name("");
+        setaccount_no("");
+        setifsc("");
+        setupi("");
+        setcancelled_cheque("");
+    };
+
+
+    const handleimage = (e) => {
+        const selectedfiles = Array.from(e.target.files);
+        setimages(selectedfiles);
+    };
+    const handleverification = (e) => {
+        const selectedfiles = e.target.files[0]
+        console.log(selectedfiles)
+        setpolice_verification(selectedfiles);
+    }
+    const handlerc = (e) => {
+        const selectedfiles = e.target.files[0]
+
+        setrc(selectedfiles);
+    }
+    const handlepermit = (e) => {
+        const selectedfiles = e.target.files[0]
+        setpermit(selectedfiles);
+    }
+    const handleinsurance = (e) => {
+        const selectedfiles = e.target.files[0]
+        setinsurance(selectedfiles);
+    }
+    const handlevehiclephoto = (e) => {
+        const selectedfiles = e.target.files[0]
+        setvehicle_img(selectedfiles);
+    }
+    const hadlevehicleselfie = (e) => {
+        const selectedfiles = e.target.files[0]
+        setvehicle_selfie(selectedfiles);
+    }
+    const handlecheque = (e) => {
+        const selectedfiles = e.target.files[0]
+        setcancelled_cheque(selectedfiles);
+    }
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        let formdata = new FormData();
+
+        formdata.append("name", name);
+        formdata.append("address", address);
+        formdata.append("city", city);
+        formdata.append("state", state);
+        formdata.append("pincode", pincode);
+        formdata.append("phone", phone);
+        formdata.append("email", email);
+        formdata.append("dob", dob);
+        formdata.append("marital_status", marital_status);
+        formdata.append("pan_no", pan_no);
+        formdata.append("adhaar_no", adhaar_no);
+        formdata.append("dl_no", dl_no);
+        formdata.append("exp_date", exp_date);
+        images.forEach((image) => {
+            formdata.append("images", image);
+        });
+        formdata.append("police_verification", police_verification);
+        formdata.append("rc", rc);
+        formdata.append("permit", permit);
+        formdata.append("insurance", insurance);
+        formdata.append("vehicle_img", vehicle_img);
+        formdata.append("vehicle_selfie", vehicle_selfie);
+        formdata.append("bank_name", bank_name);
+        formdata.append("account_no", account_no);
+        formdata.append("ifsc", ifsc);
+        formdata.append("upi", upi);
+        formdata.append("cancelled_cheque", cancelled_cheque);
+
+        try {
+            const resp = await axios.post(`${BaseUrl}driverform`, formdata);
+            console.log(resp);
+            if (resp.data.error == 0) {
+                toast.success("Form submitted successfully!");
+                resetform();
+            } else {
+                toast.error(resp.data.message || "Something went wrong!");
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
     return (
         <>
             <div className="bg-gray-50 md:py-12 py-5 px-6 md:px-20">
@@ -405,354 +541,421 @@ const Driverdetail = () => {
                         </div>
                         <div className='md:mt-10 mt-5 mb-5'>
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2 text-center">Driver Registration Form </h3>
-                            <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                                <BsCircleFill /> Personal Information
-                            </div>
-
-                            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                                <div>
-                                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Full Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        placeholder="Enter  name"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+                            <form onSubmit={handlesubmit}>
+                                <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
+                                    <BsCircleFill /> Personal Information
                                 </div>
 
+                                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
 
-                                <div>
-                                    <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Address
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="address"
-                                        name="address"
-                                        placeholder="Enter address"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+                                    <div>
+                                        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Full Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            placeholder="Enter  name"
+                                            value={name}
+                                            onChange={(e) => setname(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+
+                                    <div>
+                                        <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Address
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="address"
+                                            name="address"
+                                            placeholder="Enter address"
+                                            value={address}
+                                            onChange={(e) => setaddress(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
+                                            City
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="city"
+                                            name="city"
+                                            placeholder="Enter city"
+                                            value={city}
+                                            onChange={(e) => setcity(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            State
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="state"
+                                            name="state"
+                                            placeholder="Enter state"
+                                            value={state}
+                                            onChange={(e) => setstate(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            PIN Code
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="pincode"
+                                            name="pincode"
+                                            placeholder="Enter pincode"
+                                            value={pincode}
+                                            onChange={(e) => setpincode(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Phone Numbers
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phoneno"
+                                            name="phoneno"
+                                            maxLength={10}
+                                            placeholder="Enter phone no"
+                                            value={phone}
+                                            onChange={(e) => setphone(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Email ID
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="email"
+                                            name="email"
+                                            placeholder="Enter email"
+                                            value={email}
+                                            onChange={(e) => setemail(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Date of Birth
+                                        </label>
+                                        <input
+                                            type="date"
+                                            id="date of birth"
+                                            name="date of borth"
+                                            value={dob}
+                                            onChange={(e) => setdob(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Marital Status
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="marital status"
+                                            name="marital status"
+                                            placeholder="Enter marital status"
+                                            value={marital_status}
+                                            onChange={(e) => setmarital_status(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
+                                    <BsCircleFill /> Document Uploads
+
                                 </div>
 
+                                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
 
-                                <div>
-                                    <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                        City
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="city"
-                                        name="city"
-                                        placeholder="Enter city"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        State
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="state"
-                                        name="state"
-                                        placeholder="Enter state"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        PIN Code
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="pincode"
-                                        name="pincode"
-                                        placeholder="Enter pincode"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Phone Numbers
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="phoneno"
-                                        name="phoneno"
-                                        placeholder="Enter phone no"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Email ID
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="email"
-                                        name="email"
-                                        placeholder="Enter email"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Date of Birth
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="date of birth"
-                                        name="date of borth"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Marital Status
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="marital status"
-                                        name="marital status"
-                                        placeholder="Enter marital status"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                            </div>
-                            <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                                <BsCircleFill /> Document Uploads
+                                    <div>
+                                        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            PAN Card (PAN No.)
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="panno"
+                                            name="panno"
+                                            placeholder="Enter PAN no"
+                                            value={pan_no}
+                                            onChange={(e) => setpan_no(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
 
-                            </div>
 
-                            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
+                                    <div>
+                                        <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Aadhar Card (Aadhar No.)
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="adhaarno"
+                                            name="adhaarno"
+                                            placeholder="Enter adhaar no"
+                                            value={adhaar_no}
+                                            onChange={(e) => setadhaar_no(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
 
-                                <div>
-                                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        PAN Card (PAN No.)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="panno"
-                                        name="panno"
-                                        placeholder="Enter PAN no"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+
+                                    <div>
+                                        <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Driving License (DL No)
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="DLno"
+                                            name="DLno"
+                                            placeholder="Enter DL no"
+                                            value={dl_no}
+                                            onChange={(e) => setdl_no(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Expiry Date
+                                        </label>
+                                        <input
+                                            type="date"
+                                            id="expirydate"
+                                            name="expirydate"
+                                            placeholder="Enter state"
+                                            value={exp_date}
+                                            onChange={(e) => setexp_date(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Photographs (2 Passport Size)
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="photo"
+                                            name="photo"
+                                            onChange={handleimage}
+                                            multiple
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Police Verification / Self Verification Document
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="policeverification"
+                                            name="policeverification"
+                                            onChange={handleverification}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+                                </div>
+                                <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
+                                    <BsCircleFill /> Vehicle Information
+
+
                                 </div>
 
+                                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
 
-                                <div>
-                                    <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Aadhar Card (Aadhar No.)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="adhaarno"
-                                        name="adhaarno"
-                                        placeholder="Enter adhaar no"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+                                    <div>
+                                        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            RC
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="rc"
+                                            name="rc"
+                                            onChange={handlerc}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+
+                                    <div>
+                                        <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Permit
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="permit"
+                                            name="permit"
+                                            onChange={handlepermit}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+
+                                    <div>
+                                        <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Insurance (DOE)
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="insurance"
+                                            name="insurance"
+                                            onChange={handleinsurance}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Vehicle Photo
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="vehiclephoto"
+                                            name="vehiclephoto"
+                                            placeholder="Enter state"
+                                            onChange={handlevehiclephoto}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Selfie with Vehicle
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="vehicleselfie"
+                                            name="vehicleselfie"
+                                            multiple
+                                            onChange={hadlevehicleselfie}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+
+                                </div>
+                                <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
+                                    <BsCircleFill /> Bank Details
                                 </div>
 
+                                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
 
-                                <div>
-                                    <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Driving License (DL No)
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="DLno"
-                                        name="DLno"
-                                        placeholder="Enter DL no"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+                                    <div>
+                                        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Bank Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="bankname"
+                                            name="bankname"
+                                            placeholder='Enter bankname'
+                                            value={bank_name}
+                                            onChange={(e) => setbank_name(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Account Number
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="accountnumber"
+                                            name="accountnumber"
+                                            placeholder='Enter account no'
+                                            value={account_no}
+                                            onChange={(e) => setaccount_no(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+
+
+                                    <div>
+                                        <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
+                                            IFSC Code
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="ifsccode"
+                                            name="ifsccode"
+                                            placeholder='Enter IFSC code'
+                                            value={ifsc}
+                                            onChange={(e) => setifsc(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
+                                            UPI ID
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="upiid"
+                                            name="upiid"
+                                            placeholder='Enter UPI ID'
+                                            value={upi}
+                                            onChange={(e) => setupi(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Cancelled Cheque
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="cheque"
+                                            name="cheque"
+                                            onChange={handlecheque}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
                                 </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Expiry Date
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="expirydate"
-                                        name="expirydate"
-                                        placeholder="Enter state"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
+                                <div className='mt-4'>
+                                    <button type='submit' className='text-white bg-black px-6 py-2 rounded-md'>
+                                        SUBMIT
+                                    </button>
                                 </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Photographs (2 Passport Size)
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="photo"
-                                        name="photo"
-                                        multiple
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Police Verification / Self Verification Document
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="policeverification"
-                                        name="policeverification"
-
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-
-                            </div>
-                            <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                                <BsCircleFill /> Vehicle Information
-
-
-                            </div>
-
-                            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                                <div>
-                                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        RC
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="rc"
-                                        name="rc"
-
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-
-
-                                <div>
-                                    <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Permit
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="permit"
-                                        name="permit"
-
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-
-
-                                <div>
-                                    <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Insurance (DOE)
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="insurance"
-                                        name="insurance"
-
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Vehicle Photo
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="vehiclephoto"
-                                        name="vehiclephoto"
-                                        placeholder="Enter state"
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Selfie with Vehicle
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="vehicleselfie"
-                                        name="vehicleselfie"
-                                        multiple
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-
-
-                            </div>
-                            <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                                <BsCircleFill /> Bank Details
-                            </div>
-
-                            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                                <div>
-                                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Bank Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="bankname"
-                                        name="bankname"
-                                        placeholder='Enter bankname'
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Account Number
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="accountnumber"
-                                        name="accountnumber"
-                                        placeholder='Enter account no'
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-
-
-                                <div>
-                                    <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                        IFSC Code
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="ifsccode"
-                                        name="ifsccode"
-                                        placeholder='Enter IFSC code'
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                        UPI ID
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="upiid"
-                                        name="upiid"
-                                        placeholder='Enter UPI ID'
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Cancelled Cheque
-                                    </label>
-                                    <input
-                                        type="file"
-                                        id="cheque"
-                                        name="cheque"
-
-                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    />
-                                </div>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>

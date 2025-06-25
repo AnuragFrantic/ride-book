@@ -1,63 +1,88 @@
 import React, { useEffect } from 'react'
-// import serviceimg from '../../assets/Image/service.jpg'
-// import onlinebooking from '../../assets/Image/online-booking.png'
 import dayuse from '../../assets/Image/dayuse.png'
-import long from '../../assets/Image/longrental.png'
-import pickupdrop from '../../assets/Image/pickupdrop.png'
+import longrental from '../../assets/Image/longrental.png'
+import pickdrop from '../../assets/Image/pickupdrop.png'
 import corporate from '../../assets/Image/corporaterides.png'
 import wedding from '../../assets/Image/wedding.png'
-import partyride from '../../assets/Image/partyride.png'
-import personalgattering from '../../assets/Image/personalgattherinmg.png'
-import seamlessride from '../../assets/Image/seamlessride.png'
+import party from '../../assets/Image/partyride.png'
+import personal from '../../assets/Image/personalgattherinmg.png'
+import seamless from '../../assets/Image/seamlessride.png'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { useNavigate } from 'react-router-dom'
+// import axios from 'axios'
+import { BaseUrl } from '../../Api/BaseUrl'
 
 const Service = () => {
+    // const [data, setdata] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, []);
-    const services = [
+
+    // const handleservice = async () => {
+    //     try {
+    //         const res = await axios.get(`${BaseUrl}service`);
+    //         console.log(res.data);
+    //         setdata(res.data.data);
+
+    //     } catch (error) {
+    //         console.error("Error fetching services:", error);
+    //     }
+    // };
+    // useEffect(() => {
+    //     handleservice();
+    // }, [])
+    const data = [
         {
-            title: "Day Use",
-            img: dayuse,
-            bg: "bg-[#FFE9D7]",
+            name: "Day Use",
+            image: dayuse,
+            bg_color: "#FFE9D7",
+            path: "/day-use"
         },
         {
-            title: "Long Rental",
-            img: long,
-            bg: "bg-[#E4E8FD]",
+            name: "Long Rental",
+            image: longrental,
+            bg_color: "#E4E8FD",
+            path: "/long-rental"
         },
         {
-            title: "Premium Pickup & Drop",
-            img: pickupdrop,
-            bg: "bg-[#FFE1C9]",
+            name: "Premium Pickup & Drop",
+            image: pickdrop,
+            bg_color: "#FFE1C9",
+            path: "/premium-pickup-drop"
         },
         {
-            title: "Corporate Rides, Simplified",
-            img: corporate,
-            bg: "bg-[#DFE8FF]",
+            name: "Corporate Rides, Simplified",
+            image: corporate,
+            bg_color: "#DFE8FF",
+            path: "/corporate-rides-simplified"
         },
         {
-            title: "Wedding Special Rides",
-            img: wedding,
-            bg: "bg-[#FFEDF1]",
+            name: "Wedding Special Rides",
+            image: wedding,
+            bg_color: "#FFEDF1",
+            path: "/wedding-special-rides"
         },
         {
-            title: "Ride to the Party in Style",
-            img: partyride,
-            bg: "bg-[#DDF8FF]",
+            name: "Ride to the Party in Style",
+            image: party,
+            bg_color: "#DDF8FF",
+            path: "/ride-to-the-party-instyle"
+        },
+        {
+            name: "Personal Gatherings Made Smoother",
+            image: personal,
+            bg_color: "#E2F3E0",
+            path: "/personal-gathering-made-smoother"
         },
          {
-            title: "Personal Gatherings Made Smoother",
-            img: personalgattering,
-            bg: "bg-[#E2F3E0]",
+            name: "Seamless Rides for Group Tours",
+            image: seamless,
+            bg_color: "#FDF2CB",
+            path: "/seamless-rides-for-groups-tours"
         },
-          {
-            title: "Seamless Rides for Group Tours",
-            img: seamlessride,
-            bg: "bg-[#FDF2CB]",
-        },
-    ];
+    ]
     return (
         <>
             <section className='lg:py-10 py-5 lg:px-20 px-5 bg-gray-100'>
@@ -67,40 +92,18 @@ const Service = () => {
                             <h2 className="md:text-4xl text-2xl font-bold text-gray-800 md:mb-6 mb-3">Services</h2>
                         </div>
                     </div>
-                    {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 gris-cols-1 gap-5 md:pt-10 pt-0">
-                        {
-                            [1, 2, 3].map(() => (
-                                <>
-                                    <div className="col-span-1 transition-transform duration-300 hover:-translate-y-2" data-aos="zoom-in">
-                                        <div className="w-full bg-white rounded-[20px] p-5 ">
-                                            <div className='relative'>
-                                                <img src={serviceimg} alt='image' className='rounded-[10px]' />
-                                                <div className='md:h-[90px] h-[70px] md:w-[90px] w-[70px] bg-black rounded-full absolute bottom-[-38px] right-[12px] flex justify-center items-center'>
-                                                    <img src={onlinebooking} className='invert brightness-200 md:h-[60px] h-[40px]' />
-                                                </div>
-                                            </div>
-                                            <h2 className='font-[500] text-[20px] pb-2 pt-3'>
-                                                Online Booking
-                                            </h2>
-                                            <p className='text-gray-600 text-md'>
-                                                There are many variations of passages orem psum available but the majority have suffered alteration in some form by injected.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </>
-                            ))
-                        }
 
-                    </div> */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {services.map((service, index) => (
+                        {data?.map((service, index) => (
                             <div
                                 key={index}
-                                className={`rounded-xl p-4 flex flex-col items-center text-center ${service.bg}`}
+                                className={` cursor-pointer rounded-xl  p-4 flex flex-col items-center text-center `}
+                                style={{ backgroundColor: service?.bg_color }}
+                                onClick={() => navigate(service.path  , { state: { service : service.path } })}
                             >
-                                <img src={service.img} alt={service.title} className="sm:h-[100px] h-[70px] sm:mb-4 mb-2" />
-                                <h4 className="md:text-lg text-sm font-semibold sm:mb-3 mb-1">{service.title}</h4>
-                               
+                                <img src={service?.image} alt={service.name} className="sm:h-[100px] h-[70px] sm:mb-4 mb-2" />
+                                <h4 className="md:text-lg text-sm font-semibold sm:mb-3 mb-1">{service?.name}</h4>
+
                             </div>
                         ))}
                     </div>
