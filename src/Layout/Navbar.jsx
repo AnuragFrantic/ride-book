@@ -104,7 +104,7 @@ const ThemeNavbar = () => {
         <>
             {/* Navbar — becomes fixed with shadow on scroll */}
             <section
-                className={`w-full z-50 lg:px-20 px-10 py-2 ${isScrolled ? 'fixed top-0 bg-white shadow-md' : 'relative'
+                className={`w-full z-50 lg:px-20 px-5 py-2 ${isScrolled ? 'fixed top-0 bg-white shadow-md' : 'relative'
                     }`}
             >
                 <div className="container mx-auto">
