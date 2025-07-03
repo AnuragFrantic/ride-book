@@ -41,6 +41,18 @@ const Service = () => {
             path: "/day-use"
         },
         {
+            name: "One Way Cab",
+            image: personal,
+            bg_color: "#E2F3E0",
+            path: "/personal-gathering-made-smoother"
+        },
+        {
+            name: "Car Package for Outstation Trip",
+            image: seamless,
+            bg_color: "#FDF2CB",
+            path: "/seamless-rides-for-groups-tours"
+        },
+        {
             name: "Long Rental",
             image: longrental,
             bg_color: "#E4E8FD",
@@ -53,10 +65,10 @@ const Service = () => {
             path: "/premium-pickup-drop"
         },
         {
-            name: "Corporate Rides, Simplified",
-            image: corporate,
-            bg_color: "#DFE8FF",
-            path: "/corporate-rides-simplified"
+            name: "Ride to the Party in Style",
+            image: party,
+            bg_color: "#DDF8FF",
+            path: "/ride-to-the-party-instyle"
         },
         {
             name: "Wedding Special Rides",
@@ -65,23 +77,15 @@ const Service = () => {
             path: "/wedding-special-rides"
         },
         {
-            name: "Ride to the Party in Style",
-            image: party,
-            bg_color: "#DDF8FF",
-            path: "/ride-to-the-party-instyle"
+            name: "Corporate Rides, Simplified",
+            image: corporate,
+            bg_color: "#DFE8FF",
+            path: "/corporate-rides-simplified"
         },
-        {
-            name: "Personal Gatherings Made Smoother",
-            image: personal,
-            bg_color: "#E2F3E0",
-            path: "/personal-gathering-made-smoother"
-        },
-         {
-            name: "Seamless Rides for Group Tours",
-            image: seamless,
-            bg_color: "#FDF2CB",
-            path: "/seamless-rides-for-groups-tours"
-        },
+
+
+
+
     ]
     return (
         <>
@@ -99,7 +103,7 @@ const Service = () => {
                                 key={index}
                                 className={` cursor-pointer rounded-xl  p-4 flex flex-col items-center text-center `}
                                 style={{ backgroundColor: service?.bg_color }}
-                                onClick={() => navigate(service.path  , { state: { service : service.path } })}
+                                onClick={() => navigate(service.path, { state: { service: service.path } })}
                             >
                                 <img src={service?.image} alt={service.name} className="sm:h-[100px] h-[70px] sm:mb-4 mb-2" />
                                 <h4 className="md:text-lg text-sm font-semibold sm:mb-3 mb-1">{service?.name}</h4>
