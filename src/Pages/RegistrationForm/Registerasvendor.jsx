@@ -19,9 +19,10 @@ const Registerasvendor = () => {
     const [no_of_staff, setno_of_staff] = useState("");
     const [turn_over, setturn_over] = useState("");
     const [no_of_vehicle, setno_of_vehicle] = useState("");
-    const [car_no, setcar_no] = useState("");
-    const [model_no, setmodel_no] = useState("");
-    const [car_color, setcar_color] = useState("");
+    const [vehicle_type , setvehicle_type] = useState("");
+    // const [car_no, setcar_no] = useState("");
+    // const [model_no, setmodel_no] = useState("");
+    // const [car_color, setcar_color] = useState("");
     const [bank_name, setbank_name] = useState("");
     const [account_no, setaccount_no] = useState("");
     const [ifsc_code, setifsc_code] = useState("");
@@ -35,12 +36,13 @@ const Registerasvendor = () => {
     const [jobtitle, setjobtitle] = useState("");
     const [office_no, setoffice_no] = useState("");
     const [mobile_no, setmobile_no] = useState("");
-    const [adhaar_card, setadhaar_card] = useState("");
-    const [dl_no, setdl_no] = useState("");
-    const [dl_expdate, setdl_expdate] = useState("");
-    const [images, setimages] = useState("");
-    const [police_verification, setpolice_verification] = useState("");
+    // const [adhaar_card, setadhaar_card] = useState("");
+    // const [dl_no, setdl_no] = useState("");
+    // const [dl_expdate, setdl_expdate] = useState("");
+    // const [images, setimages] = useState("");
+    // const [police_verification, setpolice_verification] = useState("");
     const [vehicletype, setvehicletype] = useState("");
+    const [business_card, setbusiness_card] = useState("");
     const [reg_certificate, setreg_certificate] = useState("");
     const [permit, setpermit] = useState("");
     const [insurance_expdate, setinsurance_expdate] = useState("");
@@ -62,9 +64,10 @@ const Registerasvendor = () => {
         setno_of_staff("");
         setturn_over("");
         setno_of_vehicle("");
-        setcar_no("");
-        setmodel_no("");
-        setcar_color("");
+        setvehicle_type("");
+        // setcar_no("");
+        // setmodel_no("");
+        // setcar_color("");
         setbank_name("");
         setaccount_no("");
         setifsc_code("");
@@ -78,12 +81,13 @@ const Registerasvendor = () => {
         setjobtitle("");
         setoffice_no("");
         setmobile_no("");
-        setadhaar_card("");
-        setdl_no("");
-        setdl_expdate("");
-        setimages("");
-        setpolice_verification("");
+        // setadhaar_card("");
+        // setdl_no("");
+        // setdl_expdate("");
+        // setimages("");
+        // setpolice_verification("");
         setvehicletype("");
+        setbusiness_card("");
         setreg_certificate("");
         setpermit("");
         setinsurance_expdate("");
@@ -96,38 +100,42 @@ const Registerasvendor = () => {
         const selectedfiles = e.target.files[0];
         setcancelled_cheque(selectedfiles);
     }
-    const handleadhaar = (e) => {
+      const handlebusinesscard = (e) => {
         const selectedfiles = e.target.files[0];
-        setadhaar_card(selectedfiles);
+        setbusiness_card(selectedfiles);
     }
-    const handleimage = (e) => {
-        const selectedfiles = Array.from(e.target.files);
-        setimages(selectedfiles);
-    };
+    // const handleadhaar = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setadhaar_card(selectedfiles);
+    // }
+    // const handleimage = (e) => {
+    //     const selectedfiles = Array.from(e.target.files);
+    //     setimages(selectedfiles);
+    // };
     // const handleimage = (e) => {
     //     const newFiles = Array.from(e.target.files);
     //     setimages(prevImages => [...prevImages, ...newFiles]);
     // };
-    const handleverification = (e) => {
-        const selectedfiles = e.target.files[0];
-        setpolice_verification(selectedfiles);
-    }
-    const handleregistrationcertificate = (e) => {
-        const selectedfiles = e.target.files[0];
-        setreg_certificate(selectedfiles);
-    }
-    const handlepermit = (e) => {
-        const selectedfiles = e.target.files[0];
-        setpermit(selectedfiles);
-    }
-    const handlevehiclephot = (e) => {
-        const selectedfiles = e.target.files[0];
-        setvehicle_img(selectedfiles);
-    }
-    const handlecarselfie = (e) => {
-        const selectedfiles = e.target.files[0];
-        setcar_selfie(selectedfiles);
-    }
+    // const handleverification = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setpolice_verification(selectedfiles);
+    // }
+    // const handleregistrationcertificate = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setreg_certificate(selectedfiles);
+    // }
+    // const handlepermit = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setpermit(selectedfiles);
+    // }
+    // const handlevehiclephot = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setvehicle_img(selectedfiles);
+    // }
+    // const handlecarselfie = (e) => {
+    //     const selectedfiles = e.target.files[0];
+    //     setcar_selfie(selectedfiles);
+    // }
     const handlesubmit = async (e) => {
         e.preventDefault();
         let formdata = new FormData();
@@ -146,9 +154,11 @@ const Registerasvendor = () => {
         formdata.append("no_of_staff", no_of_staff);
         formdata.append("turn_over", turn_over);
         formdata.append("no_of_vehicle", no_of_vehicle);
-        formdata.append("car_no", car_no);
-        formdata.append("model_no", model_no);
-        formdata.append("car_color", car_color);
+        formdata.append("vehicle_type", vehicle_type);
+        formdata.append("business_card" , business_card)
+        // formdata.append("car_no", car_no);
+        // formdata.append("model_no", model_no);
+        // formdata.append("car_color", car_color);
         formdata.append("bank_name", bank_name);
         formdata.append("account_no", account_no);
         formdata.append("ifsc_code", ifsc_code);
@@ -162,14 +172,14 @@ const Registerasvendor = () => {
         formdata.append("jobtitle", jobtitle);
         formdata.append("office_no", office_no);
         formdata.append("mobile_no", mobile_no);
-        formdata.append("adhaar_card", adhaar_card);
-        formdata.append("dl_no", dl_no);
-        formdata.append("dl_expdate", dl_expdate);
-        images.forEach((image) => {
-            formdata.append("images", image);
-        });
-       
-        formdata.append("police_verification", police_verification);
+        // formdata.append("adhaar_card", adhaar_card);
+        // formdata.append("dl_no", dl_no);
+        // formdata.append("dl_expdate", dl_expdate);
+        // images.forEach((image) => {
+        //     formdata.append("images", image);
+        // });
+
+        // formdata.append("police_verification", police_verification);
         formdata.append("vehicletype", vehicletype);
         formdata.append("reg_certificate", reg_certificate);
         formdata.append("permit", permit);
@@ -448,7 +458,7 @@ const Registerasvendor = () => {
                                     type="number"
                                     id="noofvehicle"
                                     name=""
-                                    placeholder="Enter number of vehicle"
+                                    placeholder="Enter number of vehicles"
                                     value={no_of_vehicle}
                                     onChange={(e) => setno_of_vehicle(e.target.value)}
                                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
@@ -456,6 +466,38 @@ const Registerasvendor = () => {
                                 />
                             </div>
                             <div>
+                                <label htmlFor="noofvehicle" className="block text-sm font-medium text-gray-700 mb-2">
+                                    Vehicle Type
+                                </label>
+                                <select
+                                    id="noofvehicle"
+                                    name="noofvehicle"
+                                    value={vehicle_type}
+                                    onChange={(e) => setvehicle_type(e.target.value)}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                    required
+                                >
+                                    <option value="">Select vehicle type</option>
+                                    <option value="4 Seater">4 Seater</option>
+                                    <option value="6 Seater">6 Seater</option>
+                                    <option value="Above 6 Seater">Above 6 Seater</option>
+                                </select>
+                            </div>
+                               <div>
+                                <label htmlFor="registeredAddress" className="block text-sm font-medium text-gray-700 mb-2">
+                                    Business Card
+                                </label>
+                                <input
+                                    type="file"
+                                    id="businesscard"
+                                    name="businesscard"
+                                    onChange={handlebusinesscard}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                    required
+                                />
+                            </div>
+
+                            {/* <div>
                                 <label htmlFor="registeredAddress" className="block text-sm font-medium text-gray-700 mb-2">
                                     Car No
                                 </label>
@@ -500,7 +542,7 @@ const Registerasvendor = () => {
                                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
                                     required
                                 />
-                            </div>
+                            </div> */}
                         </div>
                         <div className="w-full mt-8 bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4">
                             <BsCircleFill /> Bank Information
@@ -713,7 +755,7 @@ const Registerasvendor = () => {
 
 
                         </div>
-                        <div className="w-full mt-8 bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4">
+                        {/* <div className="w-full mt-8 bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4">
                             <BsCircleFill /> Personal Documents
                         </div>
 
@@ -882,7 +924,7 @@ const Registerasvendor = () => {
 
 
 
-                        </div>
+                        </div> */}
                         <div className='mt-4'>
                             <button type='submit' className='text-white bg-black px-6 py-2 rounded-md'>
                                 SUBMIT

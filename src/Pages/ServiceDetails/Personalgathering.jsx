@@ -14,6 +14,7 @@ const Personalgathering = () => {
     const [phone, setphone] = useState();
     const [date, setdate] = useState();
     const [pickup_address, setpickup_address] = useState();
+    const [drop_address , setdrop_address] = useState();
     const [email, setemail] = useState();
     const [time, settime] = useState();
 
@@ -27,6 +28,7 @@ const Personalgathering = () => {
         setphone("");
         setdate("");
         setpickup_address("");
+        setdrop_address("");
         setemail("");
         settime("");
         setremarks("");
@@ -42,6 +44,7 @@ const Personalgathering = () => {
             phone: phone,
             date: date,
             pickup_address: pickup_address,
+            drop_address: drop_address,
             email: email,
             time: time,
             noof_person: noof_person,
@@ -169,6 +172,21 @@ const Personalgathering = () => {
                                             value={pickup_address}
                                             onChange={(e) => setpickup_address(e.target.value)}
                                             placeholder='Enter pickup address'
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        />
+                                    </div>
+                                       <div>
+                                        <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Drop Address
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="dropaddress"
+                                            name="dropaddress"
+                                            value={drop_address}
+                                            onChange={(e) => setdrop_address(e.target.value)}
+                                            placeholder='Enter drop address'
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
                                             required
                                         />

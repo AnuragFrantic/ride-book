@@ -380,16 +380,24 @@ const DayUse = () => {
                                     5. Ideal for Sightseeing, Events, and Day Tours
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    Whether it’s a day out exploring tourist a rac ons or a ending a wedding in another part of town, ren ng a car with a
+                                    Whether it’s a day out exploring tourist attractions or attending a wedding in another part of town, renting a car with a
                                     driver for the day gives you full control over your schedule.
                                 </p>
                                 <p className="text-gray-700 text-sm">
-                                    Tourists, in par cular, love hourly rentals because:
+                                    Tourists, in particular, love hourly rentals because:
                                 </p>
-                                <ul className="list-disc list-inside text-sm text-gray-700 mt-2 pl-4">
+                                <ul className="list-disc list-inside text-sm text-gray-700 my-2 pl-4">
                                     <li>The driver often acts as an informal guide</li>
                                     <li>You don’t waste time finding parking or waiting for cabs</li>
                                     <li>You can explore offbeat places without transport worries</li>
+                                </ul>
+                                 <p className="text-gray-700 text-sm">
+                                   For local users, it’s perfect for: 
+                                </p>
+                                <ul className="list-disc list-inside text-sm text-gray-700 mt-2 pl-4">
+                                    <li>Weddings and family functions </li>
+                                    <li>Shopping marathons</li>
+                                    <li>Airport pickups with multiple stops en route</li>
                                 </ul>
                                 <p className="text-gray-700 text-sm mt-2">
                                     Hourly rentals are a go-to solu on when you want freedom without compromising on comfort or safety.

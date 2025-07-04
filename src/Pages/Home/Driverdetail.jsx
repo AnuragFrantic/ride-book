@@ -42,6 +42,7 @@ const Driverdetail = () => {
     const [email, setemail] = useState("");
     const [dob, setdob] = useState("");
     const [marital_status, setmarital_status] = useState("");
+    const [gender, setgender] = useState("");
     const [pan_no, setpan_no] = useState("");
     const [adhaar_no, setadhaar_no] = useState("");
     const [dl_no, setdl_no] = useState("");
@@ -68,6 +69,7 @@ const Driverdetail = () => {
         setemail("");
         setdob("");
         setmarital_status("");
+        setgender("");
         setpan_no("");
         setadhaar_no("");
         setdl_no("");
@@ -134,6 +136,7 @@ const Driverdetail = () => {
         formdata.append("email", email);
         formdata.append("dob", dob);
         formdata.append("marital_status", marital_status);
+        formdata.append("gender" , gender),
         formdata.append("pan_no", pan_no);
         formdata.append("adhaar_no", adhaar_no);
         formdata.append("dl_no", dl_no);
@@ -685,6 +688,25 @@ const Driverdetail = () => {
                                             required
                                         />
                                     </div>
+                                    <div>
+                                        <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Gender
+                                        </label>
+                                        <select
+                                            id="gender"
+                                            name="gender"
+                                            value={gender}
+                                            onChange={(e) => setgender(e.target.value)}
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                                            required
+                                        >
+                                            <option value="" disabled>Select gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
                                 </div>
                                 <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
                                     <BsCircleFill /> Document Uploads

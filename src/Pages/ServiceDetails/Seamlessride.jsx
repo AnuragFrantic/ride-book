@@ -13,6 +13,7 @@ const Seamlessride = () => {
   const [vehicle_type, setvehicle_type] = useState();
   const [phone, setphone] = useState();
   const [start_date, setstart_date] = useState();
+  const [end_date, setend_date] = useState();
   const [pickup_address, setpickup_address] = useState();
   const [email, setemail] = useState();
   const [noof_days, setnoof_days] = useState();
@@ -25,6 +26,7 @@ const Seamlessride = () => {
     setvehicle_type("");
     setphone("");
     setstart_date("");
+    setend_date("");
     setpickup_address("");
     setemail("");
     setnoof_days("");
@@ -41,6 +43,7 @@ const Seamlessride = () => {
       vehicle_type: vehicle_type,
       phone: phone,
       start_date: start_date,
+      end_date: end_date,
       pickup_address: pickup_address,
       email: email,
       noof_days: noof_days,
@@ -156,6 +159,20 @@ const Seamlessride = () => {
                       name="startdate"
                       value={start_date}
                       onChange={(e) => setstart_date(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                      required
+                    />
+                  </div>
+                   <div>
+                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      id="enddate"
+                      name="enddate"
+                      value={end_date}
+                      onChange={(e) => setend_date(e.target.value)}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
                       required
                     />
