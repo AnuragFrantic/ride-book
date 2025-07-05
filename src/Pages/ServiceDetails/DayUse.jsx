@@ -90,19 +90,19 @@ const DayUse = () => {
         },
         {
             question: " Can I extend the hours if needed? ",
-            answer: "Yes. easy extensions via app or call. Charges are usually on a per-hour basis a er your ini al package. "
+            answer: "Yes. easy extensions via app or call. Charges are usually on a per-hour basis after your initial package. "
         },
         {
             question: " Is this available in tier-2 and tier-3 cities? ",
-            answer: "Yes. “Agraz” in a process for  expansions across metros and smaller ci es, offering consistent quality na onwide."
+            answer: "Yes. “Agraz” in a process for  expansions across metros and smaller cities, offering consistent quality nationwide."
         },
         {
             question: " Are the drivers verified and trained? ",
-            answer: "“Agraz” ensures all drivers undergo background checks, training, and regular vehicle sani za on for maximum safety. "
+            answer: "“Agraz” ensures all drivers undergo background checks, training, and regular vehicle sanitization for maximum safety. "
         },
         {
             question: "What if I need the same car the next day? ",
-            answer: "You can pre-book it or use mul-day hourly packages if same car is available.  "
+            answer: "You can pre-book it or use multi-day hourly packages if same car is available.  "
         },
     ]
 

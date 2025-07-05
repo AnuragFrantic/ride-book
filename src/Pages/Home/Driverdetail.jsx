@@ -14,24 +14,24 @@ const Driverdetail = () => {
     };
     const faqdata = [
         {
-            question: "Can I a ach any car / Cabs? ",
-            answer: "Your car must meet Our eligibility criteria, which include its model, condi on, and compliance with commercial permits. "
+            question: "Can I attach any car / Cabs? ",
+            answer: "Your car must meet Our eligibility criteria, which include its model, condition, and compliance with commercial permits. "
         },
         {
             question: "Do I need a commercial driving license. ",
             answer: "Yes, drivers must have a valid commercial driving license to operate a car."
         },
         {
-            question: "How much me to get registra on process done?",
-            answer: "The process typically takes 3–7 days, depending on how quickly the documents are submi ed and approved."
+            question: "How much me to get registration process done?",
+            answer: "The process typically takes 3–7 days, depending on how quickly the documents are submitted and approved."
         },
         {
-            question: "Can I a ach mul ple cars under one account? ?",
-            answer: "Yes, you can a ach several vehicles under one account as a fleet operator."
+            question: "Can I attach multiple cars under one account? ",
+            answer: "Yes, you can attach several vehicles under one account as a fleet operator."
         },
         {
-            question: "Is there any registra on fee for joining Partner program? ",
-            answer: "We charge a nominal registra on fee which varies across ci es. It’s best to check directly during the registra on process."
+            question: "Is there any registration fee for joining Partner program? ",
+            answer: "We charge a nominal registration fee which varies across cities. It’s best to check directly during the registration  process."
         },
     ]
     const [name, setname] = useState("");
@@ -938,16 +938,16 @@ const Driverdetail = () => {
                         <div className='md:mt-8 mt-4 space-y-1'>
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-4">How we help the  Drivers to Attach their Car with AGRAZ.  </h3>
                             <p className='text-gray-600 md:text-[16px] text-[14px]'>
-                                AGRAZ offer online / offline end-to-end support to streamline the process and save you me and effort.
+                                AGRAZ offer online / offline end-to-end support to streamline the process and save you time and effort.
                             </p>
                             <p className='text-gray-600 md:text-[16px] text-[14px]'>
                                 Here’s how we can help:
                             </p>
                             <ul className="list-disc list-inside space-y-1 mt-2 md:text-[16px] text-[14px]">
-                                <li><span className='font-semibold text-black'>Document Assistance: </span>We guide you in collating and submittng all required documents for Cabs Registra on.</li>
+                                <li><span className='font-semibold text-black'>Document Assistance: </span>We guide you in collating and submittng all required documents for Cabs Registration.</li>
                                 <li><span className='font-semibold text-black'>Commercial Permits: </span> Need a commercial permit for your car? We’ll help you apply for and receive it hassle-free.</li>
-                                <li><span className='font-semibold text-black'>Legal Compliance:  </span> Stay compliant with GST registra on and other legal norms.</li>
-                                <li><span className='font-semibold text-black'>Step-by-Step Guidance: </span>From owner registra on to car verifica on and driver onboarding, we’ll walk you through the en re process.</li>
+                                <li><span className='font-semibold text-black'>Legal Compliance:  </span> Stay compliant with GST registration and other legal norms.</li>
+                                <li><span className='font-semibold text-black'>Step-by-Step Guidance: </span>From owner registration to car verification and driver onboarding, we’ll walk you through the entire process.</li>
                             </ul>
                             <p className='text-gray-600 md:text-[16px] text-[14px]'>
                                 Our assistance help you to quickly become our Partner and start your earnings journey without stress.
@@ -957,9 +957,9 @@ const Driverdetail = () => {
 
                         <div className="md:mt-8 mt-4">
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-4">How Much Money and Bonus You Can Make with Cabs? </h3>
-                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">One of the top reasons people choose to a ach their cars with AGRAZ to the lucra ve earnings poten al. Here’s a breakdown of how much you can earn and the
-                                addi onal bonuses & offers. Addi onally, AGRAZ offers promo onal bonuses for new registra ons. Drivers who consistently perform well and maintain high ra ngs
-                                can earn addi onal incen ves.</p>
+                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">One of the top reasons people choose to attach their cars with AGRAZ to the lucrative earnings potential. Here’s a breakdown of how much you can earn and the
+                                additional bonuses & offers. Additionally, AGRAZ offers promotional bonuses for new registrations. Drivers who consistently perform well and maintain high ratings
+                                can earn additional incentives.</p>
                             <div className="overflow-x-auto">
                                 <table className="min-w-full border border-gray-300 md:text-sm text-[12px]">
                                     <thead className="bg-gray-100 text-gray-800">
@@ -975,8 +975,8 @@ const Driverdetail = () => {
                                             <td className="border border-gray-300 px-4 py-2">₹12–₹15 per km depends on city and route</td>
                                         </tr>
                                         <tr>
-                                            <td className="border border-gray-300 px-4 py-2">Daily Earning Poten al </td>
-                                            <td className="border border-gray-300 px-4 py-2">₹1,500–₹4,000 per dayr</td>
+                                            <td className="border border-gray-300 px-4 py-2">Daily Earning Potential </td>
+                                            <td className="border border-gray-300 px-4 py-2">₹1,500–₹4,000 per day</td>
                                         </tr>
                                         <tr>
                                             <td className="border border-gray-300 px-4 py-2">Weekly or Monthly Bonuses
@@ -989,27 +989,27 @@ const Driverdetail = () => {
                             </div>
                         </div>
                         <div className="md:mt-8 mt-4 space-y-1">
-                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Why Choose AGRAZ  to A ach the Car? </h3>
-                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">A aching your car to AGRAZ offers numerous advantages for car owners and drivers alike. Here are the key benefits:</p>
+                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Why Choose AGRAZ  to Attach the Car? </h3>
+                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">Attaching your car to AGRAZ offers numerous advantages for car owners and drivers alike. Here are the key benefits:</p>
                             <ul className="list-disc list-inside space-y-1 md:text-[16px] text-[14px]">
                                 <li><span className='font-semibold text-black'>Best Income Source:</span>The Growing market and high demand for rides ensures a consistent flow of income.</li>
                                 <li><span className='font-semibold text-black'> Flexibility:</span>Choose when and where to drive based on your convenience.</li>
                                 <li><span className='font-semibold text-black'>Fair Payment Structure:</span>We maintain a transparent earning structure, offering fair payouts and bonuses.</li>
-                                <li><span className='font-semibold text-black'>Modern Technology-Driven Pla orm: </span>With a user-friendly app for drivers, easy to manage trips, payments.</li>
-                                <li><span className='font-semibold text-black'> Trusted Brand: </span>As a leading ride-hailing pla orm, customers trust for safety and reliability.</li>
-                                <li><span className='font-semibold text-black'>  Customer Support:</span>AGRAZ offers 24/7 support for its partners to resolve any issues efficiently within specified me limit.</li>
+                                <li><span className='font-semibold text-black'>Modern Technology-Driven Platform: </span>With a user-friendly app for drivers, easy to manage trips, payments.</li>
+                                <li><span className='font-semibold text-black'> Trusted Brand: </span>As a leading ride-hailing platform, customers trust for safety and reliability.</li>
+                                <li><span className='font-semibold text-black'>  Customer Support:</span>AGRAZ offers 24/7 support for its partners to resolve any issues efficiently within specified time limit.</li>
                             </ul>
 
                         </div>
                         <div className="md:mt-8 mt-4 space-y-2">
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Conclusion</h3>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
-                                A aching your car with AGRAZ  is a great way to leverage your vehicle as a source of income. With a straight forward Cabs Registra on process, a rac ve earning
-                                poten al, and the flexibility to work on your terms, becoming a Partner can be a rewarding step.
+                                Attaching your car with AGRAZ  is a great way to leverage your vehicle as a source of income. With a straight forward Cabs Registration process, attractive earning
+                                potential, and the flexibility to work on your terms, becoming a Partner can be a rewarding step.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
                                 If you’re ready to take the plunge but need assistance, our Team (Online / Offline  available 24/7) From helping you compile the required documents to ensuring all
-                                compliance requirements are met, we make the registra on process stress-free so you can focus on growing your OUR Business Model.
+                                compliance requirements are met, we make the registration process stress-free so you can focus on growing your our Business Model.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
                                 Start your journey as an AGRAZ Partner today and drive your way to success!
