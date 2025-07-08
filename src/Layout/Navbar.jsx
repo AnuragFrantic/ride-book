@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { LuMenu } from 'react-icons/lu';
 import { IoClose } from 'react-icons/io5';
-import logo from '../assets/Image/logo.png'
+import logo from '../assets/Image/headerlogo.jpg'
 
 const ThemeNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);

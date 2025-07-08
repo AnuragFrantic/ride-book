@@ -2,7 +2,7 @@ import React from 'react'
 import apple from '../assets/Image/apple.png'
 import playstore from '../assets/Image/playstore.png'
 import { Link } from 'react-router-dom'
-import logo from '../assets/Image/logo.png'
+import logo from '../assets/Image/newlogo.jpg'
 
 const Footer = () => {
   return (
