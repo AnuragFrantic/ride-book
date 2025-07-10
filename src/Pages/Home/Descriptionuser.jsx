@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import user from '../../assets/Image/user.jpg';
-import driver from '../../assets/Image/driver.jpg';
+import driver from '../../assets/Image/drivernew.jpg';
 import vendor from '../../assets/Image/vendor.jpg';
 import { useNavigate } from 'react-router-dom';
 import Aos from 'aos';
