@@ -133,10 +133,10 @@ const PremiumPickdrop = () => {
                                             Mobile No
                                         </label>
                                         <input
-                                             type="tel"
+                                            type="tel"
                                             id="MobNo"
                                             name="MobNo"
-                                             maxLength={10}
+                                            maxLength={10}
                                             value={phone}
                                             onChange={(e) => setphone(e.target.value)}
                                             placeholder="Enter mobile no"
