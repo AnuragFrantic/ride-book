@@ -1,2 +1,2 @@
-export const BaseUrl = "http://10.5.49.29:5563/"
+export const BaseUrl = "https://rinsezone.com:5565/"
 // export const BaseUrl = "http://localhost:5563/"
