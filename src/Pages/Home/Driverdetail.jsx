@@ -214,7 +214,7 @@ const Driverdetail = () => {
 
         Object.entries(files).forEach(([key, value]) => {
             if (vehicleFileFields.includes(key)) {
-                // ✅ Rename vehicle_img → image
+
                 const formKey = key === "vehicle_img" ? "image" : key;
 
                 if (Array.isArray(value)) {
@@ -233,13 +233,13 @@ const Driverdetail = () => {
         try {
             const res = await axios.post(`${BaseUrl}vehicles/landing_create_vehicle`, data);
             if (!res.data.error) {
-                toast.success("Vehicle information submitted successfully!");
+                // toast.success("Vehicle information submitted successfully!");
             } else {
-                toast.error(res.data.message || "Something went wrong!");
+                // toast.error(res.data.message || "Something went wrong!");
             }
         } catch (err) {
             console.error(err);
-            toast.error("Error submitting vehicle information");
+            // toast.error("Error submitting vehicle information");
         }
     };
 
@@ -267,7 +267,17 @@ const Driverdetail = () => {
                             <Input label="DOB" name="dob" type="date" value={form.dob} onChange={handleChange} />
                             <Input label="City You Drive in" name="city_you_drive_in" value={form.city_you_drive_in} onChange={handleChange} />
 
-                            <Input label="Marital Status" name="marital_status" value={form.marital_status} onChange={handleChange} />
+                            <div className="">
+
+                                <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Marital Status</label>
+                                <select name="marital_status" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' value={form.marital_status} onChange={handleChange} id="">
+                                    <option value="">Select Marital Status</option>
+                                    <option value="Married">Married</option>
+                                    <option value="UnMarried">UnMarried</option>
+
+                                </select>
+                            </div>
+
                             <SelectField label="Gender" name="gender" value={form.gender} onChange={handleChange} options={["Male", "Female", "Other"]} />
                         </Section>
 
