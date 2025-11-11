@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FiPhoneCall } from 'react-icons/fi'
 import { GrMapLocation } from 'react-icons/gr'
 import { MdOutlineMail } from 'react-icons/md'
@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 const Contactus = () => {
     const [name, setname] = useState();
     const [email, setemail] = useState();
+    const [settingdata, setsettingdata] = useState([[]])
     const [subject, setsubject] = useState();
     const [message, setmessage] = useState();
     const resetform = () => {
@@ -18,6 +19,17 @@ const Contactus = () => {
         setsubject("");
         setmessage("");
     }
+
+
+    const handleSetting = async () => {
+        let res = await axios.get(`${BaseUrl}settings?page=1&limit=100`)
+        setsettingdata(res.data.data)
+    }
+
+
+    useEffect(() => {
+        handleSetting()
+    }, [])
     const handlesubmit = async (e) => {
         e.preventDefault();
         let requestdata = {
@@ -27,7 +39,7 @@ const Contactus = () => {
             message: message,
         }
         try {
-            const resp = await axios.post(`${BaseUrl}contact`, requestdata);
+            const resp = await axios.post(`${BaseUrl}contact-form`, requestdata);
             console.log(resp);
             if (resp.data.error == 0) {
                 toast.success("Form submitted successfully!");
@@ -40,8 +52,11 @@ const Contactus = () => {
         }
     }
 
+
+
     return (
         <>
+
             <section className='innerbanner flex items-center justify-center relative sm:h-[300px] h-[200px] bg-cover bg-center '>
                 <div className="absolute inset-0 bg-[#00000075] bg-opacity-50 z-0"></div>
                 <div className="container mx-auto z-10 text-center">
@@ -60,7 +75,7 @@ const Contactus = () => {
                                     Office Address
                                 </h2>
                                 <p className='text-[16px] font-[500]'>
-                                    25/B Milford, New York, USA
+                                    {settingdata.find(item => item.key === "office_address")?.value}
                                 </p>
                             </div>
                         </div>
@@ -74,7 +89,7 @@ const Contactus = () => {
 
                                 </h2>
                                 <p className='text-[16px] font-[500]'>
-                                    +2 123 4565 789
+                                    {settingdata.find(item => item.key === "call_us")?.value}
                                 </p>
                             </div>
                         </div>
@@ -88,7 +103,7 @@ const Contactus = () => {
 
                                 </h2>
                                 <p className='text-[16px] font-[500]'>
-                                    info@example.com
+                                    {settingdata.find(item => item.key === "email")?.value}
                                 </p>
                             </div>
                         </div>

@@ -20,6 +20,7 @@ import Weddingspecial from './Pages/ServiceDetails/Weddingspecial'
 import Partyride from './Pages/ServiceDetails/Partyride'
 import Personalgathering from './Pages/ServiceDetails/Personalgathering'
 import Seamlessride from './Pages/ServiceDetails/Seamlessride'
+import ServiceDetails from './Pages/ServiceDetails'
 
 function App() {
   const ThemeRoute = createBrowserRouter(
@@ -34,8 +35,8 @@ function App() {
           <Route path='/contact' element={<Contactus />} />
           <Route path='/vendor-page' element={<Registerasvendor />} />
           <Route path='/driver-detail' element={<Driverdetail />} />
-          {/* <Route path='/service/:url' element={<DayUse/>}/>
-          <Route path='/upload-servicedetail' element={<Uploadservicedetail/>}/> */}
+          <Route path='/service/:url' element={<ServiceDetails />} />
+          {/* <Route path='/upload-servicedetail' element={<Uploadservicedetail/>}/> */}
           <Route path='/day-use' element={<DayUse />} />
           <Route path='/long-rental' element={<Longrental />} />
           <Route path='/premium-pickup-drop' element={<PremiumPickdrop />} />

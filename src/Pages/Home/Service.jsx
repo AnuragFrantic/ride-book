@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import dayuse from '../../assets/Image/dayuse.png'
 import longrental from '../../assets/Image/longrental.png'
 import pickdrop from '../../assets/Image/pickupdrop.png'
@@ -11,10 +11,13 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom'
 // import axios from 'axios'
-import { BaseUrl } from '../../Api/BaseUrl'
+import { BaseImgUrl, BaseUrl } from '../../Api/BaseUrl'
+import axios from 'axios'
 
 const Service = () => {
     // const [data, setdata] = useState([]);
+    // const [specialdata, setspecialdata] = useState([]);
+
     const navigate = useNavigate();
     useEffect(() => {
         Aos.init({ duration: 2000 });
@@ -22,7 +25,7 @@ const Service = () => {
 
     // const handleservice = async () => {
     //     try {
-    //         const res = await axios.get(`${BaseUrl}service`);
+    //         const res = await axios.get(`${BaseUrl}master-data?type=PlanYourTrips`);
     //         console.log(res.data);
     //         setdata(res.data.data);
 
@@ -30,10 +33,21 @@ const Service = () => {
     //         console.error("Error fetching services:", error);
     //     }
     // };
+    // const handleservicespecial = async () => {
+    //     try {
+    //         const res = await axios.get(`${BaseUrl}master-data?type=SpecialEvents`);
+    //         console.log(res.data);
+    //         setspecialdata(res.data.data);
+
+    //     } catch (error) {
+    //         console.error("Error fetching services:", error);
+    //     }
+    // };
     // useEffect(() => {
     //     handleservice();
+    //     handleservicespecial()
     // }, [])
-    const data = [
+    const staticdata = [
         {
             name: "Day Use",
             image: dayuse,
@@ -98,7 +112,7 @@ const Service = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {data?.map((service, index) => (
+                        {staticdata?.map((service, index) => (
                             <div
                                 key={index}
                                 className={` cursor-pointer rounded-xl  p-4 flex flex-col items-center text-center `}
@@ -111,6 +125,33 @@ const Service = () => {
                             </div>
                         ))}
                     </div>
+                    {/* <h2>Dynamic</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                        {data?.map((service, index) => (
+                            <div
+                                key={index}
+                                className={` cursor-pointer rounded-xl  p-4 flex flex-col items-center text-center `}
+                                style={{ backgroundColor: service?.bg_color }}
+                                onClick={() => navigate(`service/${service.url}`, { state: { service: service.url } })}
+                            >
+                                <img src={`${BaseImgUrl}${service?.image}`} alt={service.name} className="sm:h-[100px] h-[70px] sm:mb-4 mb-2" />
+                                <h4 className="md:text-lg text-sm font-semibold sm:mb-3 mb-1">{service?.name}</h4>
+
+                            </div>
+                        ))}
+                        {specialdata?.map((service, index) => (
+                            <div
+                                key={index}
+                                className={` cursor-pointer rounded-xl  p-4 flex flex-col items-center text-center `}
+                                style={{ backgroundColor: service?.bg_color }}
+                                onClick={() => navigate(`service/${service.url}`, { state: { service: service.url } })}
+                            >
+                                <img src={`${BaseImgUrl}${service?.image}`} alt={service.name} className="sm:h-[100px] h-[70px] sm:mb-4 mb-2" />
+                                <h4 className="md:text-lg text-sm font-semibold sm:mb-3 mb-1">{service?.name}</h4>
+
+                            </div>
+                        ))}
+                    </div> */}
                 </div>
             </section>
         </>

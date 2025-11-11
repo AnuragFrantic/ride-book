@@ -1,17 +1,36 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsCircleFill } from 'react-icons/bs';
 import { FiPlus } from 'react-icons/fi';
 import { LuMinus } from 'react-icons/lu';
 import { toast } from 'react-toastify';
 import { BaseUrl } from '../../Api/BaseUrl';
 import Select from 'react-select';
+import { FileInput, Input, Section, SelectField } from '../../Component/Common';
+import PolygonEditorMap from '../../Component/PolygonEditorMap';
 
 const Driverdetail = () => {
     const [activeIndex, setActiveIndex] = useState("");
     const toggleAccordion = (index) => {
         setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
     };
+
+    const [cardata, setcardata] = useState([])
+
+
+    const handleCarfetch = async () => {
+        try {
+            let res = await axios.get(`${BaseUrl}cars`)
+            console.log(res.data)
+            setcardata(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        handleCarfetch()
+    }, [])
     const faqdata = [
         {
             question: "Can I attach any car / Cabs? ",
@@ -34,162 +53,199 @@ const Driverdetail = () => {
             answer: "We charge a nominal registration fee which varies across cities. It’s best to check directly during the registration  process."
         },
     ]
-    const [name, setname] = useState("");
-    const [address, setaddress] = useState("");
-    const [city, setcity] = useState("");
-    const [state, setstate] = useState("");
-    const [pincode, setpincode] = useState("");
-    const [phone, setphone] = useState("");
-    const [email, setemail] = useState("");
-    const [dob, setdob] = useState("");
-    const [marital_status, setmarital_status] = useState("");
-    const [gender, setgender] = useState("");
-    const [pan_no, setpan_no] = useState("");
-    const [adhaar_no, setadhaar_no] = useState("");
-    const [dl_no, setdl_no] = useState("");
-    const [exp_date, setexp_date] = useState("");
-    const [images, setimages] = useState("");
-    const [police_verification, setpolice_verification] = useState("");
-    const [rc, setrc] = useState("");
-    const [permit, setpermit] = useState("");
-    const [insurance, setinsurance] = useState("");
-    const [vehicle_img, setvehicle_img] = useState("");
-    const [vehicle_selfie, setvehicle_selfie] = useState("");
-    const [bank_name, setbank_name] = useState("");
-    const [account_no, setaccount_no] = useState("");
-    const [ifsc, setifsc] = useState("");
-    const [upi, setupi] = useState("");
-    const [cancelled_cheque, setcancelled_cheque] = useState("");
-    const [selectedService, setselectedService] = useState(null);
-    const resetform = () => {
-        setname("");
-        setaddress("");
-        setcity("");
-        setstate("");
-        setpincode("");
-        setphone("");
-        setemail("");
-        setdob("");
-        setmarital_status("");
-        setgender("");
-        setpan_no("");
-        setadhaar_no("");
-        setdl_no("");
-        setexp_date("");
-        setimages("");
-        setpolice_verification("");
-        setrc("");
-        setpermit("");
-        setinsurance("");
-        setvehicle_img("");
-        setvehicle_selfie("");
-        setbank_name("");
-        setaccount_no("");
-        setifsc("");
-        setupi("");
-        setcancelled_cheque("");
-        setselectedService("");
+    const [form, setForm] = useState({
+        name: "",
+        address: "",
+        city: "",
+        state: "",
+        car: "",
+        pincode: "",
+        phone: "",
+        email: "",
+        dob: "",
+        marital_status: "",
+        gender: "",
+        plate_no: "",
+        pan_no: "",
+        aadhaar_no: "",
+        driving_license_no: "",
+        driving_license_expiry_date: "",
+        bank_name: "",
+        account_number: "",
+        account_holder_name: "",
+        ifsc: "",
+        upi: "",
+        city_you_drive_in: "",
+    });
+
+    const [files, setFiles] = useState({
+        image: [],
+        self_police_verification_doc: "",
+        pan_front_image: "",
+        driving_license: "",
+        rc: "",
+        aadhaar_front: "",
+        aadhaar_back: "",
+        permit: "",
+        insurance: "",
+        vehicle_img: "",
+        selfie_with_vehicle: "",
+        cancelled_cheque: "",
+    });
+
+    const [selectedService, setSelectedService] = useState([]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const serviceOptions = [
-        { value: 'pickup_drop', label: 'Pick up and drop' },
-        { value: 'day_use', label: 'Day use' },
-        { value: 'one_way_cab', label: 'One Way cab' },
-        { value: 'outstation_trip', label: 'Outstation Trip' },
-        { value: 'child_women_friendly', label: 'Child / Women Friendly' },
-        { value: 'sr_citizen_friendly', label: 'Sr Citizen Friendly' },
-        { value: 'differently_abled', label: 'Differently abled Friendly' },
-    ];
-    const handleimage = (e) => {
-        const selectedfiles = Array.from(e.target.files);
-        setimages(selectedfiles);
+    const handleFile = (e) => {
+        const { name, files: selected } = e.target;
+        setFiles((prev) => ({
+            ...prev,
+            [name]: name === "image" ? Array.from(selected) : selected[0],
+        }));
     };
-    const handleverification = (e) => {
-        const selectedfiles = e.target.files[0]
-        console.log(selectedfiles)
-        setpolice_verification(selectedfiles);
-    }
-    const handlerc = (e) => {
-        const selectedfiles = e.target.files[0]
 
-        setrc(selectedfiles);
+    const resetForm = () => {
+        setForm(Object.fromEntries(Object.keys(form).map((key) => [key, ""])));
+        setFiles(Object.fromEntries(Object.keys(files).map((key) => [key, ""])));
+        setSelectedService([]);
+    };
+
+    const [positions, setPositions] = useState([]);
+
+
+    function convertToPolygon(coords) {
+        if (!coords || coords.length < 3) {
+            return null; // polygon needs at least 3 points
+        }
+
+        // Convert [{lat, lng}] → [[lng, lat]]
+        let polygonCoords = coords.map(point => [point.lng, point.lat]);
+
+        // Close polygon by repeating first point
+        polygonCoords.push([coords[0].lng, coords[0].lat]);
+
+        return {
+            work_zones: {
+                type: "Polygon",
+                coordinates: [polygonCoords]
+            }
+        };
     }
-    const handlepermit = (e) => {
-        const selectedfiles = e.target.files[0]
-        setpermit(selectedfiles);
-    }
-    const handleinsurance = (e) => {
-        const selectedfiles = e.target.files[0]
-        setinsurance(selectedfiles);
-    }
-    const handlevehiclephoto = (e) => {
-        const selectedfiles = e.target.files[0]
-        setvehicle_img(selectedfiles);
-    }
-    const hadlevehicleselfie = (e) => {
-        const selectedfiles = e.target.files[0]
-        setvehicle_selfie(selectedfiles);
-    }
-    const handlecheque = (e) => {
-        const selectedfiles = e.target.files[0]
-        setcancelled_cheque(selectedfiles);
-    }
-    const handlesubmit = async (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let formdata = new FormData();
 
-        formdata.append("name", name);
-        formdata.append("address", address);
-        formdata.append("city", city);
-        formdata.append("state", state);
-        formdata.append("pincode", pincode);
-        formdata.append("phone", phone);
-        formdata.append("email", email);
-        formdata.append("dob", dob);
-        formdata.append("marital_status", marital_status);
-        formdata.append("gender", gender),
-            formdata.append("pan_no", pan_no);
-        formdata.append("adhaar_no", adhaar_no);
-        formdata.append("dl_no", dl_no);
-        formdata.append("exp_date", exp_date);
-        images.forEach((image) => {
-            formdata.append("images", image);
+        const data = new FormData();
+
+        // ✅ Append driver-related text fields
+        Object.entries(form).forEach(([key, value]) => data.append(key, value));
+
+        // ✅ Append driver-related files only (exclude vehicle files)
+        const excludedVehicleFields = [
+            "rc",
+            "permit",
+            "plate_no",
+            "car",
+            "insurance",
+            "vehicle_img",
+            "selfie_with_vehicle",
+        ];
+
+        Object.entries(files).forEach(([key, value]) => {
+            if (!excludedVehicleFields.includes(key)) {
+                if (Array.isArray(value)) value.forEach((v) => data.append(key, v));
+                else if (value) data.append(key, value);
+            }
         });
-        formdata.append("police_verification", police_verification);
-        formdata.append("rc", rc);
-        formdata.append("permit", permit);
-        formdata.append("insurance", insurance);
-        formdata.append("vehicle_img", vehicle_img);
-        formdata.append("vehicle_selfie", vehicle_selfie);
-        formdata.append("bank_name", bank_name);
-        formdata.append("account_no", account_no);
-        formdata.append("ifsc", ifsc);
-        formdata.append("upi", upi);
-        formdata.append("cancelled_cheque", cancelled_cheque);
-        // ✅ Add selected service(s)
-        if (Array.isArray(selectedService)) {
-            // For multi-select
-            selectedService.forEach((service) => {
-                formdata.append("service_area[]", service.value);
-            });
-        } else if (selectedService?.value) {
-            // For single select
-            formdata.append("service_area", selectedService.value);
+
+        // ✅ Convert and append polygon (work_zones)
+        const workzone = convertToPolygon(positions);
+        if (workzone) {
+            data.append("work_zones", JSON.stringify(workzone.work_zones));
         }
 
         try {
-            const resp = await axios.post(`${BaseUrl}driverform`, formdata);
-            console.log(resp);
-            if (resp.data.error == 0) {
-                toast.success("Form submitted successfully!");
-                resetform();
+            const res = await axios.post(`${BaseUrl}driver`, data);
+
+            if (!res.data.error) {
+                toast.success("Driver information submitted successfully!");
+
+
+                handleVehicle(res.data.data._id);
+                resetForm();
             } else {
-                toast.error(resp.data.message || "Something went wrong!");
+                toast.error(res.data.message || "Something went wrong!");
             }
-        } catch (error) {
-            console.error('Error submitting form:', error);
+        } catch (err) {
+            console.error(err);
+            toast.error(err.response.data.errorMsg);
+
+
         }
     };
+
+
+
+
+    const handleVehicle = async (driverId) => {
+        const data = new FormData();
+
+        // ✅ Append driver reference
+        data.append("driver", driverId);
+
+        // ✅ Append non-file fields (from your form state)
+        data.append("plate_no", form.plate_no);
+        data.append("car", form.car);
+        data.append("role", "Driver")
+
+        // ✅ Define file-related fields
+        const vehicleFileFields = [
+            "rc",
+            "permit",
+            "insurance",
+            "vehicle_img",
+            "selfie_with_vehicle",
+        ];
+
+        Object.entries(files).forEach(([key, value]) => {
+            if (vehicleFileFields.includes(key)) {
+                // ✅ Rename vehicle_img → image
+                const formKey = key === "vehicle_img" ? "image" : key;
+
+                if (Array.isArray(value)) {
+                    value.forEach((v) => data.append(formKey, v));
+                } else if (value) {
+                    data.append(formKey, value);
+                }
+            }
+        });
+
+        // ✅ (Optional) Debug – see what's being sent
+        for (let [key, val] of data.entries()) {
+            console.log(`${key}:`, val);
+        }
+
+        try {
+            const res = await axios.post(`${BaseUrl}vehicles/landing_create_vehicle`, data);
+            if (!res.data.error) {
+                toast.success("Vehicle information submitted successfully!");
+            } else {
+                toast.error(res.data.message || "Something went wrong!");
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error("Error submitting vehicle information");
+        }
+    };
+
+
+
+
 
     return (
         <>
@@ -198,481 +254,98 @@ const Driverdetail = () => {
                 <div className=' mb-5'>
                     <h2 className="md:text-3xl text-xl font-bold text-center  mb-5 text-black">🚗 Drive with Us – Start Your Journey Today!</h2>
                     <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black  text-center">Driver Registration Form </h3>
-                    <form onSubmit={handlesubmit}>
-                        <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                            <BsCircleFill /> Personal Information
-                        </div>
+                    <form onSubmit={handleSubmit}>
+                        {/* Personal Info Section */}
+                        <Section title="Personal Information" icon={<BsCircleFill />}>
+                            <Input label="Full Name" name="name" value={form.name} onChange={handleChange} />
+                            <Input label="Address" name="address" value={form.address} onChange={handleChange} />
+                            <Input label="City" name="city" value={form.city} onChange={handleChange} />
+                            <Input label="State" name="state" value={form.state} onChange={handleChange} />
+                            <Input label="PIN Code" name="pincode" value={form.pincode} onChange={handleChange} />
+                            <Input label="Phone" name="phone" value={form.phone} onChange={handleChange} />
+                            <Input label="Email" name="email" value={form.email} onChange={handleChange} />
+                            <Input label="DOB" name="dob" type="date" value={form.dob} onChange={handleChange} />
+                            <Input label="City You Drive in" name="city_you_drive_in" value={form.city_you_drive_in} onChange={handleChange} />
 
-                        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
+                            <Input label="Marital Status" name="marital_status" value={form.marital_status} onChange={handleChange} />
+                            <SelectField label="Gender" name="gender" value={form.gender} onChange={handleChange} options={["Male", "Female", "Other"]} />
+                        </Section>
 
-                            <div>
-                                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Enter  name"
-                                    value={name}
-                                    onChange={(e) => setname(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
+                        {/* Document Uploads */}
+                        <Section title="Document Uploads" icon={<BsCircleFill />}>
+                            <Input label="PAN No" name="pan_no" value={form.pan_no} onChange={handleChange} />
+                            <FileInput label="Pan Front Image" name="pan_front_image" onChange={handleFile} />
+
+                            <Input label="Aadhaar No" name="aadhaar_no" value={form.aadhaar_no} onChange={handleChange} />
+                            <FileInput label="Aadhaar Front Image" name="aadhaar_front" onChange={handleFile} />
+                            <FileInput label="Aadhaar Back Image" name="aadhaar_back" onChange={handleFile} />
 
 
-                            <div>
-                                <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Address
-                                </label>
-                                <input
-                                    type="text"
-                                    id="address"
-                                    name="address"
-                                    placeholder="Enter address"
-                                    value={address}
-                                    onChange={(e) => setaddress(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                    City
-                                </label>
-                                <input
-                                    type="text"
-                                    id="city"
-                                    name="city"
-                                    placeholder="Enter city"
-                                    value={city}
-                                    onChange={(e) => setcity(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    State
-                                </label>
-                                <input
-                                    type="text"
-                                    id="state"
-                                    name="state"
-                                    placeholder="Enter state"
-                                    value={state}
-                                    onChange={(e) => setstate(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    PIN Code
-                                </label>
-                                <input
-                                    type="text"
-                                    id="pincode"
-                                    name="pincode"
-                                    placeholder="Enter pincode"
-                                    value={pincode}
-                                    onChange={(e) => setpincode(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Phone Numbers
-                                </label>
-                                <input
-                                    type="tel"
-                                    id="phoneno"
-                                    name="phoneno"
-                                    maxLength={10}
-                                    placeholder="Enter phone no"
-                                    value={phone}
-                                    onChange={(e) => setphone(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Email ID
-                                </label>
-                                <input
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Enter email"
-                                    value={email}
-                                    onChange={(e) => setemail(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Date of Birth
-                                </label>
-                                <input
-                                    type="date"
-                                    id="date of birth"
-                                    name="date of borth"
-                                    value={dob}
-                                    onChange={(e) => setdob(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Marital Status
-                                </label>
-                                <input
-                                    type="text"
-                                    id="marital status"
-                                    name="marital status"
-                                    placeholder="Enter marital status"
-                                    value={marital_status}
-                                    onChange={(e) => setmarital_status(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Gender
-                                </label>
-                                <select
-                                    id="gender"
-                                    name="gender"
-                                    value={gender}
-                                    onChange={(e) => setgender(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                >
-                                    <option value="" disabled>Select gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
+                            <Input label="DL No" name="driving_license_no" value={form.driving_license_no} onChange={handleChange} />
+
+                            <FileInput label="Driving License" name="driving_license" onChange={handleFile} />
+                            <Input label="DL Expiry Date" name="driving_license_expiry_date" type="date" value={form.driving_license_expiry_date} onChange={handleChange} />
+                            <FileInput label="Photographs" name="image" onChange={handleFile} multiple />
+                            <FileInput label="Police Verification" name="self_police_verification_doc" onChange={handleFile} />
+                        </Section>
+
+                        {/* Vehicle Info */}
+                        <Section title="Vehicle Information" icon={<BsCircleFill />}>
+                            <FileInput label="RC" name="rc" onChange={handleFile} />
+                            <FileInput label="Permit" name="permit" onChange={handleFile} />
+                            <div className="">
+                                <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Car</label>
+                                <select name="car" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' onChange={handleChange} id="">
+                                    <option value="">Select Car</option>
+                                    {cardata.map((item) => {
+                                        return (
+                                            <>
+                                                <option value={item._id}>{item.name}</option>
+
+                                            </>
+                                        )
+                                    })}
+
                                 </select>
                             </div>
+                            <Input label="Vehicle Plate Number" name="plate_no" type="text" value={form.plate_no} onChange={handleChange} />
 
-                        </div>
-                        <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                            <BsCircleFill /> Document Uploads
-
-                        </div>
-
-                        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                            <div>
-                                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    PAN Card (PAN No.)
-                                </label>
-                                <input
-                                    type="text"
-                                    id="panno"
-                                    name="panno"
-                                    placeholder="Enter PAN no"
-                                    value={pan_no}
-                                    onChange={(e) => setpan_no(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
+                            <FileInput label="Insurance" name="insurance" onChange={handleFile} />
+                            <FileInput label="Vehicle Photo" name="vehicle_img" onChange={handleFile} />
+                            <FileInput label="Selfie with Vehicle" name="selfie_with_vehicle" onChange={handleFile} />
 
 
-                            <div>
-                                <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Aadhar Card (Aadhar No.)
-                                </label>
-                                <input
-                                    type="text"
-                                    id="adhaarno"
-                                    name="adhaarno"
-                                    placeholder="Enter adhaar no"
-                                    value={adhaar_no}
-                                    onChange={(e) => setadhaar_no(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
 
+                        </Section>
 
-                            <div>
-                                <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Driving License (DL No)
-                                </label>
-                                <input
-                                    type="text"
-                                    id="DLno"
-                                    name="DLno"
-                                    placeholder="Enter DL no"
-                                    value={dl_no}
-                                    onChange={(e) => setdl_no(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Expiry Date
-                                </label>
-                                <input
-                                    type="date"
-                                    id="expirydate"
-                                    name="expirydate"
-                                    placeholder="Enter state"
-                                    value={exp_date}
-                                    onChange={(e) => setexp_date(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Photographs (2 Passport Size)
-                                </label>
-                                <input
-                                    type="file"
-                                    id="photo"
-                                    name="photo"
-                                    onChange={handleimage}
-                                    multiple
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Police Verification / Self Verification Document
-                                </label>
-                                <input
-                                    type="file"
-                                    id="policeverification"
-                                    name="policeverification"
-                                    onChange={handleverification}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-
-                        </div>
-                        <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                            <BsCircleFill /> Vehicle Information
-
-
-                        </div>
-
-                        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                            <div>
-                                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    RC
-                                </label>
-                                <input
-                                    type="file"
-                                    id="rc"
-                                    name="rc"
-                                    onChange={handlerc}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-
-
-                            <div>
-                                <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Permit
-                                </label>
-                                <input
-                                    type="file"
-                                    id="permit"
-                                    name="permit"
-                                    onChange={handlepermit}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-
-
-                            <div>
-                                <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Insurance (DOE)
-                                </label>
-                                <input
-                                    type="file"
-                                    id="insurance"
-                                    name="insurance"
-                                    onChange={handleinsurance}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Vehicle Photo
-                                </label>
-                                <input
-                                    type="file"
-                                    id="vehiclephoto"
-                                    name="vehiclephoto"
-                                    placeholder="Enter state"
-                                    onChange={handlevehiclephoto}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Selfie with Vehicle
-                                </label>
-                                <input
-                                    type="file"
-                                    id="vehicleselfie"
-                                    name="vehicleselfie"
-                                    multiple
-                                    onChange={hadlevehicleselfie}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
+                        <div className="mt-2">
                             <div className="mb-4">
-                                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Select Service Area<span className='text-red-600'>  (You can select multiple service areas)</span>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Select Service Area
                                 </label>
-                                <Select
-                                    id="service"
-                                    options={serviceOptions}
-                                    value={selectedService}
-                                    onChange={setselectedService}
-                                    isMulti
-                                    placeholder="Select service"
-                                    className="w-full"
-                                    classNamePrefix="custom-select"
-                                    styles={{
-                                        control: (base, state) => ({
-                                            ...base,
-                                            padding: '0.25rem 0.5rem',
-                                            borderRadius: '0.5rem',
-                                            borderColor: state.isFocused ? '#000' : '#d1d5db', // black or gray-300
-                                            boxShadow: state.isFocused ? '0 0 0 1px #000' : 'none',
-                                            '&:hover': {
-                                                borderColor: '#000',
-                                            },
-                                            minHeight: '40px',
-                                        }),
-                                        valueContainer: (base) => ({
-                                            ...base,
-                                            padding: '0px',
-                                        }),
-                                        input: (base) => ({
-                                            ...base,
-                                            margin: 0,
-                                            padding: 0,
-                                        }),
-                                        indicatorsContainer: (base) => ({
-                                            ...base,
-                                            height: '40px',
-                                        }),
-                                    }}
-                                />
-
-                            </div>
-
-
-                        </div>
-                        <div className="w-full bg-gray-200 text-black text-sm p-2 border-l border-black flex items-center gap-2 rounded-md mb-4 mt-4">
-                            <BsCircleFill /> Bank Details
-                        </div>
-
-                        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
-
-                            <div>
-                                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Bank Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="bankname"
-                                    name="bankname"
-                                    placeholder='Enter bankname'
-                                    value={bank_name}
-                                    onChange={(e) => setbank_name(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="establish" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Account Number
-                                </label>
-                                <input
-                                    type="text"
-                                    id="accountnumber"
-                                    name="accountnumber"
-                                    placeholder='Enter account no'
-                                    value={account_no}
-                                    onChange={(e) => setaccount_no(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-
-
-                            <div>
-                                <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                    IFSC Code
-                                </label>
-                                <input
-                                    type="text"
-                                    id="ifsccode"
-                                    name="ifsccode"
-                                    placeholder='Enter IFSC code'
-                                    value={ifsc}
-                                    onChange={(e) => setifsc(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="pancard" className="block text-sm font-medium text-gray-700 mb-2">
-                                    UPI ID
-                                </label>
-                                <input
-                                    type="text"
-                                    id="upiid"
-                                    name="upiid"
-                                    placeholder='Enter UPI ID'
-                                    value={upi}
-                                    onChange={(e) => setupi(e.target.value)}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="gst" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Cancelled Cheque
-                                </label>
-                                <input
-                                    type="file"
-                                    id="cheque"
-                                    name="cheque"
-                                    onChange={handlecheque}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                    required
-                                />
+                                <div style={{ height: "400px", width: "100%", borderRadius: "8px", overflow: "hidden" }}>
+                                    <PolygonEditorMap
+                                        positions={positions}
+                                        setPositions={setPositions}
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div className='mt-4'>
-                            <button type='submit' className='text-white bg-black px-6 py-2 rounded-md'>
-                                SUBMIT
-                            </button>
-                        </div>
+
+                        {/* Bank Info */}
+                        <Section title="Bank Details" icon={<BsCircleFill />}>
+                            <Input label="Bank Name" name="bank_name" value={form.bank_name} onChange={handleChange} />
+                            <Input label="Account No" name="account_number" value={form.account_number} onChange={handleChange} />
+                            <Input label="Account Holder Name " name="account_holder_name" value={form.account_holder_name} onChange={handleChange} />
+
+                            <Input label="IFSC Code" name="ifsc" value={form.ifsc} onChange={handleChange} />
+                            <Input label="UPI ID" name="upi" value={form.upi} onChange={handleChange} />
+                            <FileInput label="Cancelled Cheque" name="cancelled_cheque" onChange={handleFile} />
+                        </Section>
+
+                        <button type="submit" className="bg-black text-white px-6 py-2 rounded-md mt-4">
+                            SUBMIT
+                        </button>
                     </form>
                 </div>
 
@@ -765,7 +438,7 @@ const Driverdetail = () => {
                             <div>
                                 <h3 className="md:text-2xl text-lg font-bold mb-2 text-purple-600">Training Program</h3>
                                 <p className="text-gray-700 md:text-[16px] text-[14px]">
-                                    Free Training program to each driver – Help them to create more money and social value 
+                                    Free Training program to each driver – Help them to create more money and social value
                                 </p>
                             </div>
                         </div>
@@ -1054,3 +727,7 @@ const Driverdetail = () => {
 }
 
 export default Driverdetail
+
+
+
+

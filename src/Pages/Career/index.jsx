@@ -23,10 +23,10 @@ const Career = () => {
         const formdata = new FormData();
         formdata.append("name", name);
         formdata.append("email", email);
-        formdata.append("phone", phone);
-        formdata.append("image", file);
+        formdata.append("mobile", phone);
+        formdata.append("resume", file);
         try {
-            const resp = await axios.post(`${BaseUrl}carrer`, formdata);
+            const resp = await axios.post(`${BaseUrl}carrer-form`, formdata);
             console.log(resp);
             if (resp.data.error == 0) {
                 toast.success("Form submitted successfully!");
@@ -36,6 +36,7 @@ const Career = () => {
             }
         } catch (error) {
             console.error('Error submitting form:', error);
+            toast.error(error.response.data.message)
         }
     }
 
