@@ -252,7 +252,7 @@ const Driverdetail = () => {
 
             <div className="bg-gray-50 md:py-12 py-5 px-6 md:px-20">
                 <div className=' mb-5'>
-                    <h2 className="md:text-3xl text-xl font-bold text-center  mb-5 text-black">🚗 Drive with Us – Start Your Journey Today!</h2>
+                    <h2 className="md:text-3xl text-xl font-bold text-center  mb-5 text-black"> Drive with Us – Start Your Journey Today!</h2>
                     <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black  text-center">Driver Registration Form </h3>
                     <form onSubmit={handleSubmit}>
                         {/* Personal Info Section */}

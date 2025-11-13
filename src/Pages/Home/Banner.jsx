@@ -1,5 +1,7 @@
 import React from 'react'
-import bannerright from '../../assets/Image/bannerright.webp'
+// import bannerright from '../../assets/Image/bannerright.webp'
+import bannerright from '../../assets/Image/bannerimg.jpg'
+
 import apple from '../../assets/Image/apple.png'
 import playstore from '../../assets/Image/playstore.png'
 
@@ -12,10 +14,11 @@ const Banner = () => {
                     <div className="grid md:grid-cols-2 grid-cols-1 gap-10 items-center">
                         <div className="col-span-1 leftcol">
                             <h1 className="text-white text-2xl sm:text-3xl md:text-[40px] lg:text-[52px] font-bold leading-tight mb-6">
-                                Your Ride, Just a Click Away!
+                                Your Ride, One Tap Away
                             </h1>
                             <p className="text-white text-sm sm:text-base md:text-[16px] leading-[22px] sm:leading-[24px]">
-                                Instantly book autos, cabs, and bikes anytime, anywhere. Enjoy a fast, safe, and reliable ride with our seamless booking platform — built for urban travelers like you.
+                                Instantly book autos, cabs, or bikes — fast, safe, and seamless.
+                                Experience reliable travel designed for the way you move.
                             </p>
                             <div className="flex gap-5 mt-10 flex-wrap">
                                 <img src={apple} alt="apple store" className="h-[45px] md:h-[55px] lg:h-[60px]" />
@@ -24,7 +27,7 @@ const Banner = () => {
                         </div>
                         <div className="col-span-1 rightcol">
                             <div className="collast">
-                                <img src={bannerright} alt="banner" className="w-full h-auto object-contain" />
+                                <img src={bannerright} alt="banner" className="w-full h-auto object-contain rounded-2xl" />
                             </div>
                         </div>
                     </div>

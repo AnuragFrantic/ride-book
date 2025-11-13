@@ -15,7 +15,7 @@ const Footer = () => {
                 LOGO
               </h2> */}
               <Link to='/'>
-                <img src={logo} alt='image' className='md:h-[150px] h-[100px]' />
+                <img src={logo} alt='image' className=' h-[100px]' />
               </Link>
             </div>
             <div className="col-span-1">
@@ -60,7 +60,7 @@ const Footer = () => {
             </div>
             <div className="col-span-1 lg:mt-0 mt-5">
               <h2 className='lg:text-[22px] md:text-[20px] text-[18px] font-[500] text-white mb-3'>
-                Your Ride, Anytime, Anywhere!
+                Rides That Reach You. Anytime.
               </h2>
               <Link to="">
                 <img src={apple} alt='image' className='md:h-[60px] h-[50px]' />
@@ -73,19 +73,11 @@ const Footer = () => {
 
             </div>
           </div>
-          <div className="flex justify-between pt-5">
-            <div className="font-[300] md:text-[14px] text-[12px] text-white">
-              Ride book with  ©  2025. All right reserved
+          <div className="flex justify-between pt-5 w-full">
+            <div className="font-[300] md:text-[14px] text-[12px] text-white text-center w-full">
+              Agraz © 2025. All rights reserved.
             </div>
-            {/* <div className='flex gap-1 items-center'>
-              <a href='https://www.facebook.com/people/Project-Beat-Records/61556641920870/?mibextid=WC7FNe' target='_blank'>
-                <FaFacebook className='text-white text-lg' />
-              </a>
-              <a href='https://www.instagram.com/accounts/login/?next=%2Fprojectbeatrecords%2F&source=omni_redirect' target='_blank'>
-                <PiInstagramLogoFill className='text-white text-xl' />
-              </a>
 
-            </div> */}
           </div>
 
         </div>

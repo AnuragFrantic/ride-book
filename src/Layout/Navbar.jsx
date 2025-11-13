@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { LuMenu } from 'react-icons/lu';
 import { IoClose } from 'react-icons/io5';
-import logo from '../assets/Image/headerlogo.jpg'
+import logo from '../assets/Image/newlogo.jpg'
 
 const ThemeNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -112,7 +112,7 @@ const ThemeNavbar = () => {
                         {/* Logo */}
                         <NavLink to="/">
                             {/* <h2 className="text-black">logo</h2> */}
-                            <img src={logo} alt='logo' className='md:h-[70px] h-[60px] ' />
+                            <img src={logo} alt='logo' className='md:h-[70px] h-[60px] rounded-md' />
                         </NavLink>
 
                         {/* Desktop nav */}
