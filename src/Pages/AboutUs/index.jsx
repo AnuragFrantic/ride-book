@@ -1,9 +1,10 @@
 import React from 'react'
 import aboutus from '../../assets/Image/about.jpg'
+import HomeAbout from '../Home/HomeAbout'
 const AboutUs = () => {
     return (
         <>
-            <section className='lg:py-10 py-5 lg:px-20 px-5 bg-gray-50'>
+            {/* <section className='lg:py-10 py-5 lg:px-20 px-5 bg-gray-50'>
                 <div className="container mx-auto">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 items-center">
                         <div className='lg:order-1 order-2'>
@@ -30,7 +31,8 @@ const AboutUs = () => {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
+            <HomeAbout />
         </>
     )
 }

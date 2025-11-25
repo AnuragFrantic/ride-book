@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import aboutus from '../../assets/Image/about.jpg'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const HomeAbout = () => {
     const navigate = useNavigate();
+    const location = useLocation()
+
+    const homepath = location.pathname === '/';
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, []);
@@ -32,11 +35,12 @@ const HomeAbout = () => {
                                 </p>
                                 <p className="mt-4 text-gray-700 font-medium md:text-lg text-sm">Ride smart. Ride safe. Ride with AGRAZ.</p>
                             </div>
-                            <button className="cursor-pointer mt-8 inline-block md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 rounded-full bg-black text-white transition duration-300"
+                            {homepath && <button className="cursor-pointer mt-8 inline-block md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 rounded-full bg-black text-white transition duration-300"
                                 onClick={() => navigate('/about-us')}
                             >
                                 Learn More
-                            </button>
+                            </button>}
+
                         </div>
 
                     </div>
