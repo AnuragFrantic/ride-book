@@ -227,7 +227,7 @@ const DayUse = () => {
                                             onChange={(e) => setemail(e.target.value)}
                                             placeholder='Enter email id'
                                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
-                                            required
+
                                         />
                                     </div>
                                     <div>
@@ -391,8 +391,8 @@ const DayUse = () => {
                                     <li>You don’t waste time finding parking or waiting for cabs</li>
                                     <li>You can explore offbeat places without transport worries</li>
                                 </ul>
-                                 <p className="text-gray-700 text-sm">
-                                   For local users, it’s perfect for: 
+                                <p className="text-gray-700 text-sm">
+                                    For local users, it’s perfect for:
                                 </p>
                                 <ul className="list-disc list-inside text-sm text-gray-700 mt-2 pl-4">
                                     <li>Weddings and family functions </li>
