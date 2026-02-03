@@ -331,7 +331,7 @@ const Weddingspecial = () => {
                                     Seamless Logistics and Professional Service
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    Hiring a high-end car for your wedding ensures you get services from highly professional drivers. “Agraz” aim for punctual pickups, tidy cars and trained drivers. So, couples won’t stress about surprises or running into difficulties on their special day.
+                                    Hiring a high-end car for your wedding ensures you get services from highly professional drivers. “VERDE” aim for punctual pickups, tidy cars and trained drivers. So, couples won’t stress about surprises or running into difficulties on their special day.
                                 </p>
                             </div>
                             <div>

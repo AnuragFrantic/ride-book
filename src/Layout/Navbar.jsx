@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { LuMenu } from 'react-icons/lu';
 import { IoClose } from 'react-icons/io5';
-import logo from '../assets/Image/newlogo.jpg'
+import logo from '../assets/Image/newlogo.png'
 
 const ThemeNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -110,9 +110,9 @@ const ThemeNavbar = () => {
                 <div className="container mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
-                        <NavLink to="/" className='bg-black rounded-xl'>
+                        <NavLink to="/" className='rounded-xl bg-black p-2'>
                             {/* <h2 className="text-black">logo</h2> */}
-                            <img src={logo} alt='logo' className='md:h-[70px] h-[60px]  rounded-md' />
+                            <img src={logo} alt='logo' className='md:h-[60px] h-[50px]  rounded-md' />
                         </NavLink>
 
                         {/* Desktop nav */}

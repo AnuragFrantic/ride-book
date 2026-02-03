@@ -2,7 +2,7 @@ import React from 'react'
 import apple from '../assets/Image/apple.png'
 import playstore from '../assets/Image/playstore.png'
 import { Link } from 'react-router-dom'
-import logo from '../assets/Image/newlogo.jpg'
+import logo from '../assets/Image/newlogo.png'
 
 const Footer = () => {
   return (
@@ -75,7 +75,7 @@ const Footer = () => {
           </div>
           <div className="flex justify-between pt-5 w-full">
             <div className="font-[300] md:text-[14px] text-[12px] text-white text-center w-full">
-              Agraz © 2025. All rights reserved.
+              VERDE © 2025. All rights reserved.
             </div>
 
           </div>

@@ -14,7 +14,7 @@ const Personalgathering = () => {
     const [phone, setphone] = useState();
     const [date, setdate] = useState();
     const [pickup_address, setpickup_address] = useState();
-    const [drop_address , setdrop_address] = useState();
+    const [drop_address, setdrop_address] = useState();
     const [email, setemail] = useState();
     const [time, settime] = useState();
 
@@ -176,7 +176,7 @@ const Personalgathering = () => {
                                             required
                                         />
                                     </div>
-                                       <div>
+                                    <div>
                                         <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
                                             Drop Address
                                         </label>
@@ -280,7 +280,7 @@ const Personalgathering = () => {
                                 Download the App for quick booking
                             </h3>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                <strong className='text-black'>“Agraz”</strong> offers a convenient and cost-effective solution for intercity travel, especially for trips where you don't need a round- trip. “Agraz” provide flexibility, transparency in pricing, and a wider range of vehicle options compared to traditional taxis.
+                                <strong className='text-black'>“VERDE”</strong> offers a convenient and cost-effective solution for intercity travel, especially for trips where you don't need a round- trip. “VERDE” provide flexibility, transparency in pricing, and a wider range of vehicle options compared to traditional taxis.
                             </p>
 
 

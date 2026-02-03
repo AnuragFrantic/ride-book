@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 
 const Longrental = () => {
-     const location = useLocation();
+    const location = useLocation();
     const url = location.state?.service || '';
     const [activeIndex, setActiveIndex] = useState("");
     const toggleAccordion = (index) => {
@@ -78,7 +78,7 @@ const Longrental = () => {
         },
         {
             question: " Is fuel cost included in monthly car rentals? ",
-            answer: " “Agraz” offer fuel-inclusive packages, while others charge separately. It’s best to confirm while booking."
+            answer: " “VERDE” offer fuel-inclusive packages, while others charge separately. It’s best to confirm while booking."
         },
         {
             question: "Can I switch the car model during the rental period?  ",
@@ -159,7 +159,7 @@ const Longrental = () => {
                                             Mobile No
                                         </label>
                                         <input
-                                         type="tel"
+                                            type="tel"
                                             id="MobNo"
                                             name="MobNo"
                                             maxLength={10}
@@ -319,7 +319,7 @@ const Longrental = () => {
                                     3.	Wide Range of Vehicles
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    <strong className='text-black'>“Agraz”</strong>  offer a variety of vehicles to choose from. Whether you need a compact car for solo commuting or an SUV for family trips, monthly car rentals allow you to select a model that suits your preferences and lifestyle. You can also switch vehicles every month based on your changing requirements.
+                                    <strong className='text-black'>“VERDE”</strong>  offer a variety of vehicles to choose from. Whether you need a compact car for solo commuting or an SUV for family trips, monthly car rentals allow you to select a model that suits your preferences and lifestyle. You can also switch vehicles every month based on your changing requirements.
                                 </p>
 
                             </div>
@@ -355,7 +355,7 @@ const Longrental = () => {
                                     7.	Customizable Packages
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    <strong className='text-black'>“Agraz”</strong> offer customizable rental packages based on your usage. From daily mileage limits to fuel-inclusive options, you can tailor your rental agreement to suit your needs, making it even more efficient and economical.
+                                    <strong className='text-black'>“VERDE”</strong> offer customizable rental packages based on your usage. From daily mileage limits to fuel-inclusive options, you can tailor your rental agreement to suit your needs, making it even more efficient and economical.
                                 </p>
 
                             </div>

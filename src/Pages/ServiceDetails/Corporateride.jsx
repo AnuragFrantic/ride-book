@@ -182,7 +182,7 @@ const Corporateride = () => {
                                             Mobile No
                                         </label>
                                         <input
-                                           type="tel"
+                                            type="tel"
                                             id="MobNo"
                                             name="MobNo"
                                             maxLength={10}
@@ -283,22 +283,22 @@ const Corporateride = () => {
                                 Corporate car rental refers to the practice of renting vehicles for business purposes. Although it refers to the practice of renting vehicles for business purposes. Companies may rent Cars, Vans, Buses or other vehicles for a variety of reasons, including employee travel, client transportation, or support operations such as deliveries.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                <strong className='text-black'>“Agraz”</strong> Corporate care can provide businesses with access to a wide range of vehicles, often at discounted rates, and may also offer additional services such as insurance, fuel management, and 24/7 roadside assistance. These services can help companies save time and money, while also ensuring that their employees and clients have reliable transportation when needed.
+                                <strong className='text-black'>“VERDE”</strong> Corporate care can provide businesses with access to a wide range of vehicles, often at discounted rates, and may also offer additional services such as insurance, fuel management, and 24/7 roadside assistance. These services can help companies save time and money, while also ensuring that their employees and clients have reliable transportation when needed.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                One of the primary <strong className='text-black'>advantages of “Agraz” corporate care</strong> is the flexibility they offer. Companies can rent vehicles for a variety of purposes, including airport transfers, business meetings, and client visits. This flexibility allows businesses to meet their transportation needs without having to invest in expensive vehicles that may only be used occasionally.
+                                One of the primary <strong className='text-black'>advantages of “VERDE” corporate care</strong> is the flexibility they offer. Companies can rent vehicles for a variety of purposes, including airport transfers, business meetings, and client visits. This flexibility allows businesses to meet their transportation needs without having to invest in expensive vehicles that may only be used occasionally.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                In addition to flexibility, “Agraz” corporate care offer a range of cost-saving benefits. For example, many rental companies offer discounted rates for long-term rentals or for renting multiple vehicles at once. This can be especially beneficial for businesses that require frequent travel or have a large number of employees.
+                                In addition to flexibility, “VERDE” corporate care offer a range of cost-saving benefits. For example, many rental companies offer discounted rates for long-term rentals or for renting multiple vehicles at once. This can be especially beneficial for businesses that require frequent travel or have a large number of employees.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
                                 Another <strong className='text-black'>cost-saving benefit is</strong>  the ability to avoid the expenses associated with owning and maintaining a fleet of vehicles. These expenses can include insurance, registration fees, maintenance costs, and more. By renting vehicles as needed, businesses can avoid these costs and save money in the long run.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                Finally, “Agraz” corporate care can also help businesses improve their sustainability efforts. By renting fuel-efficient vehicles, companies can reduce their carbon footprint and contribute to a more sustainable future.
+                                Finally, “VERDE” corporate care can also help businesses improve their sustainability efforts. By renting fuel-efficient vehicles, companies can reduce their carbon footprint and contribute to a more sustainable future.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                The primary aim of “Agraz” corporate <strong className='text-black'>cab services</strong> is to provide comfortable and safe transportation for employees and clients, while also ensuring convenience and cost-effectiveness for the company. These services are especially useful for companies that require frequent transportation of their employees and clients to different locations within a city or across cities.
+                                The primary aim of “VERDE” corporate <strong className='text-black'>cab services</strong> is to provide comfortable and safe transportation for employees and clients, while also ensuring convenience and cost-effectiveness for the company. These services are especially useful for companies that require frequent transportation of their employees and clients to different locations within a city or across cities.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
                                 The services typically include pick-up and drop-off at designated locations, booking through online platforms, tracking of cabs, and payment through various modes. The companies may also choose to customize the services based on their specific requirements, such as adding extra safety features, selecting the type of vehicle, or scheduling pickups and drops at particular times.

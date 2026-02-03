@@ -260,7 +260,7 @@ const PremiumPickdrop = () => {
                                 Download the App for quick booking
                             </h3>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                <strong className='text-black'>“Agraz”</strong> offers a luxurious and comfortable travel experience, ideal for special occasions, business trips, or exploring new cities. We provide access to a wide range of vehicles, often with chauffeur services, and prioritize passenger comfort and safety.
+                                <strong className='text-black'>“VERDE”</strong> offers a luxurious and comfortable travel experience, ideal for special occasions, business trips, or exploring new cities. We provide access to a wide range of vehicles, often with chauffeur services, and prioritize passenger comfort and safety.
                             </p>
 
 

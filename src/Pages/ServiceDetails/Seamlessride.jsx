@@ -138,7 +138,7 @@ const Seamlessride = () => {
                       Mobile No
                     </label>
                     <input
-                       type="tel"
+                      type="tel"
                       id="MobNo"
                       name="MobNo"
                       maxLength={10}
@@ -163,7 +163,7 @@ const Seamlessride = () => {
                       required
                     />
                   </div>
-                   <div>
+                  <div>
                     <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
                       End Date
                     </label>
@@ -280,7 +280,7 @@ const Seamlessride = () => {
                 Download the App for quick booking
               </h3>
               <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                For an outstation trip, it is crucial to find the right car that can significantly improve your experience. When going on a vacation, business trip, or visiting relatives, <strong className='text-black'>“Agraz”</strong> is Just a click away - Reliable & Affordable outstation Cabs - will get you there comfortably without stretching your budget too much. We always provide Cars that caters to your specific requirements and ensures that you have an enjoyable ride throughout. Through providing the appropriate vehicle, with seamless travel experiences
+                For an outstation trip, it is crucial to find the right car that can significantly improve your experience. When going on a vacation, business trip, or visiting relatives, <strong className='text-black'>“VERDE”</strong> is Just a click away - Reliable & Affordable outstation Cabs - will get you there comfortably without stretching your budget too much. We always provide Cars that caters to your specific requirements and ensures that you have an enjoyable ride throughout. Through providing the appropriate vehicle, with seamless travel experiences
               </p>
             </div>
             <div className="mt-5 space-y-6">
@@ -304,7 +304,7 @@ const Seamlessride = () => {
                   One of the best things about car rental is the independence it offers. This means you can travel to your destination at any speed and even have stopovers on the way when you rent a vehicle. Having your own car, taking road trips, or just exploring new areas would be much easier when taxi timetables do not bind you. Such control is significant in long-distance drives where flexibility adds value to one’s trip.
                 </p>
                 <p className="text-gray-700 text-sm">
-                  <strong className='text-black'>“Agraz”</strong> charge flat fee or have daily prices, which are more pocket-friendly. This means that you will know exactly what your total expenditure will be and can even save some money especially if it is a longer trip.
+                  <strong className='text-black'>“VERDE”</strong> charge flat fee or have daily prices, which are more pocket-friendly. This means that you will know exactly what your total expenditure will be and can even save some money especially if it is a longer trip.
                 </p>
                 <p className="text-gray-700 text-sm">
                   Overall, outstation travel-wise, renting a vehicle gives greater flexibility, thereby enabling one to manipulate their journeys based on personal preferences and budgetary considerations, leading to better experiences.
@@ -319,7 +319,7 @@ const Seamlessride = () => {
                   Before going for an outstation trip, you must take into account some essential details to ensure that the travelling is smooth and stress-free. The first thing which must be done is plan your itinerary carefully (As our online platform help to design by including maximum visiting point as per your available time and interest). It will help better comprehend points such as extra charges, mileage restrictions and so on. Thus, you can avoid any unexpected costs and unpredictability.
                 </p>
                 <p className="text-gray-700 text-sm">
-                  Ready to make your next trip seamless? Check out “Agraz” Booking App for high quality Vehicles, that fit your budget. Rent a car now and enjoy stress-free outstation trips!
+                  Ready to make your next trip seamless? Check out “VERDE” Booking App for high quality Vehicles, that fit your budget. Rent a car now and enjoy stress-free outstation trips!
                 </p>
               </div>
 

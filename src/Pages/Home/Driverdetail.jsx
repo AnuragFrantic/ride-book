@@ -619,9 +619,9 @@ const Driverdetail = () => {
                             </p>
                         </div>
                         <div className='md:mt-8 mt-4 space-y-1'>
-                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-4">How we help the  Drivers to Attach their Car with AGRAZ.  </h3>
+                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-4">How we help the  Drivers to Attach their Car with VERDE.  </h3>
                             <p className='text-gray-600 md:text-[16px] text-[14px]'>
-                                AGRAZ offer online / offline end-to-end support to streamline the process and save you time and effort.
+                                VERDE offer online / offline end-to-end support to streamline the process and save you time and effort.
                             </p>
                             <p className='text-gray-600 md:text-[16px] text-[14px]'>
                                 Here’s how we can help:
@@ -640,8 +640,8 @@ const Driverdetail = () => {
 
                         <div className="md:mt-8 mt-4">
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-4">How Much Money and Bonus You Can Make with Cabs? </h3>
-                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">One of the top reasons people choose to attach their cars with AGRAZ to the lucrative earnings potential. Here’s a breakdown of how much you can earn and the
-                                additional bonuses & offers. Additionally, AGRAZ offers promotional bonuses for new registrations. Drivers who consistently perform well and maintain high ratings
+                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">One of the top reasons people choose to attach their cars with VERDE to the lucrative earnings potential. Here’s a breakdown of how much you can earn and the
+                                additional bonuses & offers. Additionally, VERDE offers promotional bonuses for new registrations. Drivers who consistently perform well and maintain high ratings
                                 can earn additional incentives.</p>
                             <div className="overflow-x-auto">
                                 <table className="min-w-full border border-gray-300 md:text-sm text-[12px]">
@@ -672,22 +672,22 @@ const Driverdetail = () => {
                             </div>
                         </div>
                         <div className="md:mt-8 mt-4 space-y-1">
-                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Why Choose AGRAZ  to Attach the Car? </h3>
-                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">Attaching your car to AGRAZ offers numerous advantages for car owners and drivers alike. Here are the key benefits:</p>
+                            <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Why Choose VERDE  to Attach the Car? </h3>
+                            <p className="text-gray-600 my-2 md:text-[16px] text-[14px]">Attaching your car to VERDE offers numerous advantages for car owners and drivers alike. Here are the key benefits:</p>
                             <ul className="list-disc list-inside space-y-1 md:text-[16px] text-[14px]">
                                 <li><span className='font-semibold text-black'>Best Income Source:</span>The Growing market and high demand for rides ensures a consistent flow of income.</li>
                                 <li><span className='font-semibold text-black'> Flexibility:</span>Choose when and where to drive based on your convenience.</li>
                                 <li><span className='font-semibold text-black'>Fair Payment Structure:</span>We maintain a transparent earning structure, offering fair payouts and bonuses.</li>
                                 <li><span className='font-semibold text-black'>Modern Technology-Driven Platform: </span>With a user-friendly app for drivers, easy to manage trips, payments.</li>
                                 <li><span className='font-semibold text-black'> Trusted Brand: </span>As a leading ride-hailing platform, customers trust for safety and reliability.</li>
-                                <li><span className='font-semibold text-black'>  Customer Support:</span>AGRAZ offers 24/7 support for its partners to resolve any issues efficiently within specified time limit.</li>
+                                <li><span className='font-semibold text-black'>  Customer Support:</span>VERDE offers 24/7 support for its partners to resolve any issues efficiently within specified time limit.</li>
                             </ul>
 
                         </div>
                         <div className="md:mt-8 mt-4 space-y-2">
                             <h3 className="md:text-2xl sm:text-xl text-lg font-semibold text-black mb-2">Conclusion</h3>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
-                                Attaching your car with AGRAZ  is a great way to leverage your vehicle as a source of income. With a straight forward Cabs Registration process, attractive earning
+                                Attaching your car with VERDE  is a great way to leverage your vehicle as a source of income. With a straight forward Cabs Registration process, attractive earning
                                 potential, and the flexibility to work on your terms, becoming a Partner can be a rewarding step.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
@@ -695,7 +695,7 @@ const Driverdetail = () => {
                                 compliance requirements are met, we make the registration process stress-free so you can focus on growing your our Business Model.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px]'>
-                                Start your journey as an AGRAZ Partner today and drive your way to success!
+                                Start your journey as an VERDE Partner today and drive your way to success!
                             </p>
                         </div>
                         <div className="md:mt-10 mt-5">

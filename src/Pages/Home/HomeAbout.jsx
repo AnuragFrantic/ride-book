@@ -24,24 +24,59 @@ const HomeAbout = () => {
                                 className="rounded-2xl shadow-lg w-full lg:h-[450px]  h-[300px] object-cover transition-transform duration-500 hover:scale-105"
                             />
                         </div>
-                        <div className='lg:order-2 order-1'>
-                            <h2 className="md:text-4xl text-2xl font-bold text-gray-800 md:mb-6 mb-4">About Us</h2>
-                            <div className='border-l-4 border-gray-800 pl-5'>
-                                <p className="text-gray-600 md:text-lg text-sm mb-4 text-justify">
-                                    At <strong>AGRAZ Venture of Trip Seller</strong>, we simplify your daily commute with reliable and affordable ride options. Whether you need a quick auto for a nearby errand, a two-wheeler for zipping through traffic, or a comfortable cab for longer rides—we’ve got you covered.
+                        <div className="lg:order-2 order-1">
+
+                            {/* Section Title */}
+                            <h2 className="md:text-4xl text-3xl font-extrabold text-gray-900 md:mb-6 mb-4 tracking-tight">
+                                About Us
+                            </h2>
+
+                            <div className="border-l-4 border-gray-900 pl-6 space-y-5">
+
+                                {/* Paragraph 1 */}
+                                <p className="text-gray-700 md:text-lg text-sm leading-relaxed text-justify">
+                                    We at <strong className="text-gray-900">VERDE </strong> are redefining everyday urban travel with{" "}
+                                    <strong className="text-gray-900">efficient, reliable, and eco-friendly ride-hailing.</strong>{" "}
+                                    Built for modern cities, VERDE blends smart technology with greener mobility to deliver rides you can trust —
+                                    at prices that make sense.
                                 </p>
-                                <p className="text-gray-600 md:text-lg text-sm text-justify">
-                                    Our mission is to provide seamless ride booking experiences across all devices, ensuring safety, speed, and satisfaction for every passenger. Trusted drivers, real-time tracking, and transparent pricing make us your perfect travel partner.
+
+                                {/* Paragraph 2 */}
+                                <p className="text-gray-700 md:text-lg text-sm leading-relaxed text-justify">
+                                    Whether you’re commuting to work, heading to college, moving across the city, or planning a tour,{" "}
+                                    <strong className="text-gray-900"> VERDE</strong> makes every ride{" "}
+                                    <strong className="text-gray-900">simple, affordable, and responsible.</strong>
                                 </p>
-                                <p className="mt-4 text-gray-700 font-medium md:text-lg text-sm">Ride smart. Ride safe. Ride with AGRAZ.</p>
+
+                                {/* Paragraph 3 */}
+                                <p className="text-gray-700 md:text-lg text-sm leading-relaxed text-justify">
+                                    Our mission is to build a{" "}
+                                    <strong className="text-gray-900">Hybrid Ride-Hailing Platform</strong> that combines{" "}
+                                    <strong className="text-gray-900">EVs, CNG vehicles, and bikes</strong> to deliver affordable,
+                                    reliable, and eco-conscious rides — benefiting riders, drivers, and cities by making transportation
+                                    cleaner, smarter, and more efficient.
+                                </p>
+
+                                {/* Tagline */}
+                                <p className="mt-4 font-semibold md:text-lg text-sm text-gray-900 tracking-wide">
+                                    Ride smart. Ride safe. Ride with <span className="text-black">VERDE.</span>
+                                </p>
+
                             </div>
-                            {homepath && <button className="cursor-pointer mt-8 inline-block md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 rounded-full bg-black text-white transition duration-300"
-                                onClick={() => navigate('/about-us')}
-                            >
-                                Learn More
-                            </button>}
+
+                            {homepath && (
+                                <button
+                                    className="cursor-pointer mt-8 inline-flex items-center md:px-8 px-6 md:text-lg text-sm md:py-3 py-2 
+                 rounded-full bg-black text-white font-medium 
+                 hover:bg-gray-900 hover:scale-105 transition-all duration-300"
+                                    onClick={() => navigate("/about-us")}
+                                >
+                                    Learn More
+                                </button>
+                            )}
 
                         </div>
+
 
                     </div>
                 </div>

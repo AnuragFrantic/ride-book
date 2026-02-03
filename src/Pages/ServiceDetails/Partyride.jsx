@@ -130,7 +130,7 @@ const Partyride = () => {
                                             Mobile No
                                         </label>
                                         <input
-                                             type="tel"
+                                            type="tel"
                                             id="MobNo"
                                             name="MobNo"
                                             maxLength={10}
@@ -260,7 +260,7 @@ const Partyride = () => {
                                 Your mode of transportation plays a crucial role in setting the tone for your event. A luxury vehicle serves more than just functional purposes, it becomes a part of your visual narrative, enhancing your Photos, Videos, and guests first impressions. Grand birthday parties or VIP events and social events etc. a striking car adds flair, reflecting your personal style and sense of occasion.
                             </p>
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
-                                <strong className='text-black'>“Agraz”</strong>  is an excellent way to give your special occasion a touch of elegance, comfort, and convenience. What adds more excitement to the occasion is when you get to book your long-wished favourite car to celebrate your special day. Whether it’s for a wedding, corporate event, or a lavish birthday party, traveling in your fantasy car makes the event more memorable. However, the entire process of renting must be planned thoroughly so that the experience remains smooth. From choosing a trustworthy rental service to having clarity on rental terms and conditions, each step makes a difference.
+                                <strong className='text-black'>“VERDE”</strong>  is an excellent way to give your special occasion a touch of elegance, comfort, and convenience. What adds more excitement to the occasion is when you get to book your long-wished favourite car to celebrate your special day. Whether it’s for a wedding, corporate event, or a lavish birthday party, traveling in your fantasy car makes the event more memorable. However, the entire process of renting must be planned thoroughly so that the experience remains smooth. From choosing a trustworthy rental service to having clarity on rental terms and conditions, each step makes a difference.
                             </p>
 
 
@@ -273,7 +273,7 @@ const Partyride = () => {
                                     Renting a Car for Special Events is a Great Idea
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    <strong className='text-black'>“Agraz” </strong>offers a luxury experience and adds glamour and sophistication to your special occasion without the burden of ownership. From weddings, corporate events, and birthdays, to an anniversary, makes extravagant entrance possible and makes the experience unforgettable.
+                                    <strong className='text-black'>“VERDE” </strong>offers a luxury experience and adds glamour and sophistication to your special occasion without the burden of ownership. From weddings, corporate events, and birthdays, to an anniversary, makes extravagant entrance possible and makes the experience unforgettable.
                                 </p>
                                 <ul className="list-disc list-inside text-sm text-gray-700 mt-2 pl-4">
                                     <li>Brings luxury and style– Reaching your destination in a premium car makes the entire experience worthwhile, leaving a strong impression on everyone.</li>
@@ -281,7 +281,7 @@ const Partyride = () => {
                                         Affordable option– Rent out high-end cars at the lowest possible price, forgoing charges such as insurance, maintenance, and depreciation.
                                     </li>
                                     <li>
-                                        Huge Fleet– “Agraz” provides a wide range of car options to choose from, ranging from luxury cars to limousines, meeting various consumer preferences.
+                                        Huge Fleet– “VERDE” provides a wide range of car options to choose from, ranging from luxury cars to limousines, meeting various consumer preferences.
                                     </li>
                                     <li>
                                         Convenience and flexibility– Select pick-up and drop-off points as per your convenience, eliminating hassles in relation to transportation.

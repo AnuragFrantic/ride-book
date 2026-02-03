@@ -94,11 +94,11 @@ const DayUse = () => {
         },
         {
             question: " Is this available in tier-2 and tier-3 cities? ",
-            answer: "Yes. “Agraz” in a process for  expansions across metros and smaller cities, offering consistent quality nationwide."
+            answer: "Yes. “VERDE” in a process for  expansions across metros and smaller cities, offering consistent quality nationwide."
         },
         {
             question: " Are the drivers verified and trained? ",
-            answer: "“Agraz” ensures all drivers undergo background checks, training, and regular vehicle sanitization for maximum safety. "
+            answer: "“VERDE” ensures all drivers undergo background checks, training, and regular vehicle sanitization for maximum safety. "
         },
         {
             question: "What if I need the same car the next day? ",
@@ -289,7 +289,7 @@ const DayUse = () => {
                             <p className='text-gray-600 my-2 md:text-[16px] text-[14px] mt-3'>
                                 In today’s fast-packed urban life, flexibility and convenience often dictate our travel choices. Whether you're attending
                                 multiple business meetings, exploring a new city on a tight schedule, committing to a full-day cab or dealing with
-                                inconsistent ride-hailing apps isn’t always ideal. <strong className='text-black'>“Agraz”</strong> offers a <strong className='text-black'>Hourly Car Rental Services with professional
+                                inconsistent ride-hailing apps isn’t always ideal. <strong className='text-black'>“VERDE”</strong> offers a <strong className='text-black'>Hourly Car Rental Services with professional
                                     drivers</strong> emerge as a perfect solution.
                             </p>
 
@@ -360,7 +360,7 @@ const DayUse = () => {
                                     4. Enhanced Comfort and Privacy
                                 </h3>
                                 <p className="text-gray-700 text-sm">
-                                    “Agraz” Car for day use comes to comfort and privacy—especially if you're carrying luggage, documents, or traveling with family.
+                                    “VERDE” Car for day use comes to comfort and privacy—especially if you're carrying luggage, documents, or traveling with family.
                                     Hourly rentals offer:
                                 </p>
                                 <ul className="list-disc list-inside text-sm text-gray-700 mt-2 pl-4">
