@@ -110,9 +110,9 @@ const ThemeNavbar = () => {
                 <div className="container mx-auto">
                     <div className="flex justify-between items-center">
                         {/* Logo */}
-                        <NavLink to="/">
+                        <NavLink to="/" className='bg-black rounded-xl'>
                             {/* <h2 className="text-black">logo</h2> */}
-                            <img src={logo} alt='logo' className='md:h-[70px] h-[60px] rounded-md' />
+                            <img src={logo} alt='logo' className='md:h-[70px] h-[60px]  rounded-md' />
                         </NavLink>
 
                         {/* Desktop nav */}
