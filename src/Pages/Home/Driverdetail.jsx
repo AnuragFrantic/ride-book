@@ -304,9 +304,9 @@ const Driverdetail = () => {
                             <FileInput label="RC" name="rc" onChange={handleFile} />
                             <FileInput label="Permit" name="permit" onChange={handleFile} />
                             <div className="">
-                                <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Car</label>
-                                <select name="car" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' onChange={handleChange} id="">
-                                    <option value="">Select Car</option>
+                                <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Vehicle</label>
+                                <select name="vehicle" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' onChange={handleChange} id="">
+                                    <option value="">Select vehicle</option>
                                     {cardata.map((item) => {
                                         return (
                                             <>
