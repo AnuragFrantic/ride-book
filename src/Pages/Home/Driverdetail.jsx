@@ -16,6 +16,8 @@ const Driverdetail = () => {
     };
 
     const [cardata, setcardata] = useState([])
+    const [servicedata, setservicedata] = useState([])
+
 
 
     const handleCarfetch = async () => {
@@ -28,8 +30,19 @@ const Driverdetail = () => {
         }
     }
 
+    const handleVechileService = async () => {
+        try {
+            let res = await axios.get(`${BaseUrl}master-data?page=1&limit=15&type=PlanYourTrips`)
+            console.log(res.data)
+            setservicedata(res.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     useEffect(() => {
         handleCarfetch()
+        handleVechileService()
     }, [])
     const faqdata = [
         {
@@ -68,6 +81,8 @@ const Driverdetail = () => {
         plate_no: "",
         pan_no: "",
         aadhaar_no: "",
+
+        fuel_type: "",
         driving_license_no: "",
         driving_license_expiry_date: "",
         bank_name: "",
@@ -145,12 +160,20 @@ const Driverdetail = () => {
         // ✅ Append driver-related text fields
         Object.entries(form).forEach(([key, value]) => data.append(key, value));
 
+
+        if (selectedService?.length) {
+            selectedService.forEach(id => {
+                data.append("services", id);
+            });
+        }
+
         // ✅ Append driver-related files only (exclude vehicle files)
         const excludedVehicleFields = [
             "rc",
             "permit",
             "plate_no",
             "car",
+            "fuel_type",
             "insurance",
             "vehicle_img",
             "selfie_with_vehicle",
@@ -162,6 +185,8 @@ const Driverdetail = () => {
                 else if (value) data.append(key, value);
             }
         });
+
+
 
         // ✅ Convert and append polygon (work_zones)
         const workzone = convertToPolygon(positions);
@@ -202,6 +227,8 @@ const Driverdetail = () => {
         data.append("plate_no", form.plate_no);
         data.append("car", form.car);
         data.append("role", "Driver")
+        data.append("fuel_type", form.fuel_type)
+
 
         // ✅ Define file-related fields
         const vehicleFileFields = [
@@ -244,6 +271,11 @@ const Driverdetail = () => {
     };
 
 
+    const serviceOptions = servicedata.map(item => ({
+        value: item._id,
+        label: item.name
+    }));
+
 
 
 
@@ -266,19 +298,18 @@ const Driverdetail = () => {
                             <Input label="Email" name="email" value={form.email} onChange={handleChange} />
                             <Input label="DOB" name="dob" type="date" value={form.dob} onChange={handleChange} />
                             <Input label="City You Drive in" name="city_you_drive_in" value={form.city_you_drive_in} onChange={handleChange} />
-
                             <div className="">
-
                                 <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Marital Status</label>
                                 <select name="marital_status" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' value={form.marital_status} onChange={handleChange} id="">
                                     <option value="">Select Marital Status</option>
                                     <option value="Married">Married</option>
                                     <option value="UnMarried">UnMarried</option>
-
                                 </select>
                             </div>
 
                             <SelectField label="Gender" name="gender" value={form.gender} onChange={handleChange} options={["Male", "Female", "Other"]} />
+
+
                         </Section>
 
                         {/* Document Uploads */}
@@ -305,24 +336,61 @@ const Driverdetail = () => {
                             <FileInput label="Permit" name="permit" onChange={handleFile} />
                             <div className="">
                                 <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Vehicle</label>
-                                <select name="vehicle" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' onChange={handleChange} id="">
+                                <select name="car" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' onChange={handleChange} id="">
                                     <option value="">Select vehicle</option>
                                     {cardata.map((item) => {
                                         return (
                                             <>
                                                 <option value={item._id}>{item.name}</option>
-
                                             </>
                                         )
                                     })}
 
                                 </select>
                             </div>
+
+                            <div>
+                                <label className='block text-sm font-medium text-gray-700 mb-2'>
+                                    Vehicle Services
+                                </label>
+
+                                <Select
+                                    options={serviceOptions}
+                                    isMulti
+                                    placeholder="Select services..."
+
+                                    // ⭐ show selected values when editing
+                                    value={serviceOptions.filter(opt =>
+                                        form.services?.includes(opt.value)
+                                    )}
+
+                                    // ⭐ store array of ids
+                                    onChange={(selected) => {
+                                        const values = selected ? selected.map(opt => opt.value) : [];
+                                        setForm(prev => ({ ...prev, services: values }));
+                                    }}
+                                />
+                            </div>
                             <Input label="Vehicle Plate Number" name="plate_no" type="text" value={form.plate_no} onChange={handleChange} />
 
                             <FileInput label="Insurance" name="insurance" onChange={handleFile} />
                             <FileInput label="Vehicle Photo" name="vehicle_img" onChange={handleFile} />
                             <FileInput label="Selfie with Vehicle" name="selfie_with_vehicle" onChange={handleFile} />
+
+                            <div className="">
+                                <label className='block text-sm font-medium text-gray-700 mb-2'>
+                                    Select Fuel Type
+                                </label>
+                                <select name="fuel_type" className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-black' value={form.fuel_type} onChange={handleChange} id="">
+                                    <option value="">Select Fuel Type</option>
+                                    <option value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Electric">Electric</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="CNG">CNG</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
 
 
 
