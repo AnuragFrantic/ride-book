@@ -56,6 +56,12 @@ const Footer = () => {
                   </Link>
 
                 </li>
+                <li>
+                  <Link to='/delete-policy'>
+                    Delete Policy
+                  </Link>
+
+                </li>
               </ul>
             </div>
             <div className="col-span-1 lg:mt-0 mt-5">

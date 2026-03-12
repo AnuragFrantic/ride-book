@@ -21,6 +21,7 @@ import Partyride from './Pages/ServiceDetails/Partyride'
 import Personalgathering from './Pages/ServiceDetails/Personalgathering'
 import Seamlessride from './Pages/ServiceDetails/Seamlessride'
 import ServiceDetails from './Pages/ServiceDetails'
+import DeletePolicy from './Pages/Policies/DeletePolicy'
 
 function App() {
   const ThemeRoute = createBrowserRouter(
@@ -32,6 +33,8 @@ function App() {
           <Route path='/career' element={<Career />} />
           <Route path='/privacy-policy' element={<Policy />} />
           <Route path='/terms-condition' element={<Termscondition />} />
+          <Route path='/delete-policy' element={<DeletePolicy />} />
+
           <Route path='/contact' element={<Contactus />} />
           <Route path='/vendor-page' element={<Registerasvendor />} />
           <Route path='/driver-detail' element={<Driverdetail />} />

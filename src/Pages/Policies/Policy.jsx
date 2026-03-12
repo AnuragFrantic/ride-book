@@ -3,43 +3,108 @@ import React from 'react'
 const Policy = () => {
     return (
         <>
-            <section className='innerbanner flex items-center justify-center relative sm:h-[300px] h-[200px] bg-cover bg-center '>
-                <div className="absolute inset-0 bg-[#00000075] bg-opacity-50 z-0"></div>
+            {/* Banner */}
+            <section className='innerbanner flex items-center justify-center relative sm:h-[300px] h-[200px] bg-cover bg-center'>
+                <div className="absolute inset-0 bg-[#00000075] z-0"></div>
                 <div className="container mx-auto z-10 text-center">
                     <h2 className="md:text-4xl text-2xl font-bold text-white">Privacy Policy</h2>
                 </div>
             </section>
-            <section className='lg:px-20 px-5'>
+
+            {/* Policy Content */}
+            <section className='lg:px-20 px-5 py-10'>
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-1">
-                        <div className="col-span-1 py-10">
-                            <div className="w-full">
-                                <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify'>
-                                    We value your privacy and are committed to protecting your personal information. When you use our ride booking services for autos, cabs, or bikes, we may collect details such as your name, contact number, pickup and drop locations, and payment information to ensure a smooth and secure booking experience.
-                                </p>
-                                <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify'>
-                                    Your information is used solely to provide and improve our services, process bookings, and communicate ride-related updates. We do not sell or share your personal data with third parties except as required by law or to trusted partners who help in delivering our services (such as drivers or payment gateways).
-                                </p>
-                                <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify'>
-                                    We implement strong security measures to safeguard your data from unauthorized access or disclosure. By using our platform, you agree to the terms of this privacy policy. If you have any concerns or queries, feel free to contact our support team.
-                                </p>
-                                   <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify'>
-                                    We value your privacy and are committed to protecting your personal information. When you use our ride booking services for autos, cabs, or bikes, we may collect details such as your name, contact number, pickup and drop locations, and payment information to ensure a smooth and secure booking experience.
-                                </p>
-                                <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify'>
-                                    Your information is used solely to provide and improve our services, process bookings, and communicate ride-related updates. We do not sell or share your personal data with third parties except as required by law or to trusted partners who help in delivering our services (such as drivers or payment gateways).
-                                </p>
-                                <p className='text-gray-600 md:text-lg text-sm mb-4 text-justify' >
-                                    We implement strong security measures to safeguard your data from unauthorized access or disclosure. By using our platform, you agree to the terms of this privacy policy. If you have any concerns or queries, feel free to contact our support team.
-                                </p>
-                            </div>
+                    <div className="space-y-6 text-gray-600 md:text-lg text-sm text-justify">
+
+                        <p>
+                            At Verde Ride, we respect your privacy and are committed to protecting your personal
+                            information. This Privacy Policy explains how we collect, use, and safeguard your
+                            information when you use our ride-booking services for autos, cabs, and bikes.
+                        </p>
+
+                        {/* Information We Collect */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                1. Information We Collect
+                            </h3>
+                            <p>
+                                When you use our platform, we may collect personal information such as your name,
+                                contact number, email address, pickup and drop locations, and payment details.
+                                This information helps us provide a smooth and reliable ride-booking experience.
+                            </p>
                         </div>
+
+                        {/* How We Use Information */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                2. How We Use Your Information
+                            </h3>
+                            <p>
+                                Your information is used to process ride bookings, communicate ride updates,
+                                improve service quality, and provide customer support. We may also use your
+                                information to notify you about service updates, offers, or important changes
+                                to our policies.
+                            </p>
+                        </div>
+
+                        {/* Data Sharing */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                3. Sharing of Information
+                            </h3>
+                            <p>
+                                We do not sell your personal information to third parties. However, your
+                                information may be shared with trusted partners such as drivers, payment
+                                processors, or service providers who help us deliver our services efficiently.
+                                Information may also be shared if required by law or legal authorities.
+                            </p>
+                        </div>
+
+                        {/* Data Security */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                4. Data Security
+                            </h3>
+                            <p>
+                                We implement strong security measures to protect your personal data from
+                                unauthorized access, misuse, or disclosure. While we strive to protect your
+                                information, no method of online transmission or storage is completely secure.
+                            </p>
+                        </div>
+
+                        {/* User Rights */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                5. Your Rights
+                            </h3>
+                            <p>
+                                You have the right to access, update, or request deletion of your personal
+                                information. If you wish to make changes to your account or request data
+                                removal, you may contact our support team.
+                            </p>
+                        </div>
+
+                        {/* Contact */}
+                        <div>
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                6. Contact Us
+                            </h3>
+                            <p>
+                                If you have any questions or concerns regarding this Privacy Policy,
+                                please contact us at:
+                                <a
+                                    href="mailto:info@verde-ride.com"
+                                    className="text-green-600 font-medium ml-1"
+                                >
+                                    info@verde-ride.com
+                                </a>
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </section>
         </>
-
-
     )
 }
 
