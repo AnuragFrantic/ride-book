@@ -31,9 +31,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='/career' element={<Career />} />
-          <Route path='/privacy-policy' element={<Policy />} />
-          <Route path='/terms-condition' element={<Termscondition />} />
-          <Route path='/delete-policy' element={<DeletePolicy />} />
+          <Route path='/policy/:url' element={<Policy />} />
+          {/* <Route path='/terms-condition' element={<Termscondition />} />
+          <Route path='/delete-policy' element={<DeletePolicy />} /> */}
 
           <Route path='/contact' element={<Contactus />} />
           <Route path='/vendor-page' element={<Registerasvendor />} />
