@@ -1,18 +1,20 @@
 import React from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import screenshot1 from '../../assets/Image/screen1.png';
-import screenshot2 from '../../assets/Image/screen2.png';
-import screenshot3 from '../../assets/Image/screen3.png';
-import screenshot4 from '../../assets/Image/screen4.png';
-import screenshot5 from '../../assets/Image/screen5.png';
-import screenshot6 from '../../assets/Image/screen6.png';
-import screenshot7 from '../../assets/Image/screen7.png';
-import screenshot8 from '../../assets/Image/screen8.png';
-import screenshot9 from '../../assets/Image/screen9.png';
-import screenshot10 from '../../assets/Image/screen10.png';
-import screenshot11 from '../../assets/Image/screen11.png';
-import screenshot12 from '../../assets/Image/screen6.png';
+import screenshot1 from '../../assets/Image/2.jpg';
+import screenshot2 from '../../assets/Image/3.jpg';
+import screenshot3 from '../../assets/Image/4.jpg';
+import screenshot4 from '../../assets/Image/6.jpg';
+import screenshot5 from '../../assets/Image/7.jpg';
+import screenshot6 from '../../assets/Image/8.jpg';
+import screenshot7 from '../../assets/Image/9.jpg';
+import screenshot8 from '../../assets/Image/10.jpg';
+import screenshot9 from '../../assets/Image/11.jpg';
+import screenshot10 from '../../assets/Image/12.jpg';
+import screenshot11 from '../../assets/Image/13.jpg';
+import screenshot12 from '../../assets/Image/14.jpg';
+
+
 import Slider from 'react-slick';
 
 const Screenshot = () => {
@@ -69,8 +71,12 @@ const Screenshot = () => {
                     <Slider {...settings}>
                         {images.map((image, index) => (
                             <div key={index} className="px-3">
-                                <div className="bg-white rounded-[22px] overflow-hidden shadow">
-                                    <img src={image} alt={`screenshot-${index + 1}`} className="w-full h-auto" />
+                                <div className="bg-white rounded-[22px] overflow-hidden shadow ">
+                                    <img
+                                        src={image}
+                                        alt={`screenshot-${index + 1}`}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                             </div>
                         ))}
